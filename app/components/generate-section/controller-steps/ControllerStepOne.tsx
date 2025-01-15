@@ -94,6 +94,7 @@ export default function ControllerStepOne() {
           />
         </div>
         <FontWeightSelector
+          font={title.font}
           weight={title.fontWeight}
           onChange={(value) => handleChange("fontWeight", value)}
         />

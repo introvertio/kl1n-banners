@@ -18,7 +18,7 @@ export const db = new BannerDB();
 const defaultTitle: Title = {
   text: "Default Title",
   font: cabinetFont,
-  fontWeight: 400,
+  fontWeight: 500,
   italic: false,
   fontSize: 24,
   color: "#000000",
