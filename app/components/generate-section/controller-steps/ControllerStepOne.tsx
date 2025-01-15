@@ -13,6 +13,8 @@ import {
 } from "../../styling/font-classes";
 import Spinner from "../../loaders/Spinner";
 import FontSelector from "../selectors/FontSelector";
+import ItalicSelector from "../selectors/ItalicSelector";
+import AlignSelector from "../selectors/AlignSelector";
 
 const fonts = [
   { name: "Bespoke", value: bespokeFont },
@@ -53,13 +55,13 @@ export default function ControllerStepOne() {
 
   return (
     <div className=" w-full flex flex-col items-center justify-center">
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-3">
         <input
           type="text"
           name="text"
           value={title.text}
           onChange={(e) => handleChange("text", e.target.value)}
-          className="border border-gray-300 p-2 rounded"
+          className=" shadow w-full p-2 rounded outline-none font-bold focus:ring-2 focus:ring-main-blue transition-all"
         />
         <FontSelector
           fonts={fonts}
@@ -68,6 +70,27 @@ export default function ControllerStepOne() {
           titleText={title.text}
           italic={title.italic}
         />
+        <div className="flex flex-row gap-1 items-end justify-between">
+          <ItalicSelector
+            isItalic={title.italic}
+            weight={title.fontWeight}
+            font={title.font}
+            onChange={(value) => handleChange("italic", value)}
+          />
+          <AlignSelector
+            alignment={title.alignment}
+            onChange={(value) => handleChange("alignment", value)}
+          />
+        </div>
+        <div className="relative flex flex-col w-full h-full">
+          <p className="text-black font-bold text-xs mr-auto">Text color</p>
+          <input
+            className="w-full h-10 outline-none rounded active:scale-95 transition-all shadow "
+            type="color"
+            value={title.color}
+            onChange={(e) => handleChange("color", e.target.value)}
+          />
+        </div>
         <label className="flex flex-col">
           Font Weight:
           <input
@@ -83,43 +106,19 @@ export default function ControllerStepOne() {
             className="border border-gray-300 p-2 rounded"
           />
         </label>
-        <label className="flex items-center gap-2">
-          Italic:
-          <input
-            type="checkbox"
-            checked={title?.italic || false}
-            onChange={(e) => handleChange("italic", e.target.checked)}
-          />
-        </label>
-        <label className="flex items-center gap-2">
-          Color:
-          <input
-            type="color"
-            value={title?.color}
-            onChange={(e) => handleChange("color", e.target.value)}
-          />
-        </label>
+
         <label className="flex flex-col">
           Font Size:
           <input
             type="number"
             name="fontSize"
-            min={12}
+            min={16}
             max={100}
-            value={title?.fontSize || 16}
+            value={title.fontSize || 16}
             onChange={(e) => handleChange("fontSize", parseInt(e.target.value))}
             className="border border-gray-300 p-2 rounded"
           />
         </label>
-        <select
-          value={title?.alignment || "center"}
-          onChange={(e) => handleChange("alignment", e.target.value)}
-          className="border border-gray-300 p-2 rounded"
-        >
-          <option value="left">Left</option>
-          <option value="center">Center</option>
-          <option value="right">Right</option>
-        </select>
       </div>
     </div>
   );

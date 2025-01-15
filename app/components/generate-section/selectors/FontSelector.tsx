@@ -23,21 +23,25 @@ export default function FontSelector({
   const titlePreview = titleText.slice(0, 2) || "Aa";
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-row w-full flex-wrap gap-1 items-center justify-between">
       {fonts.map((font) => (
         <button
           key={font.name}
           onClick={() => onChange(font.value)}
           className={`${
             font.value
-          } size-10 rounded flex items-center justify-center shadow disabled:bg-main-blue ${
+          } size-10 rounded flex items-center justify-center shadow disabled:bg-main-blue active:scale-95 transition-all ${
             font.value === selectedFont
               ? "bg-main-blue text-white"
               : "bg-white text-black"
           }`}
           disabled={font.value === selectedFont}
         >
-          <span className={` ${italic && `italic`} text-lg font-black `}>
+          <span
+            className={` ${
+              italic && `italic`
+            } text-lg font-black transition-all `}
+          >
             {titlePreview}
           </span>
         </button>
