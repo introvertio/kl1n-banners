@@ -30,7 +30,7 @@ export default function BannerPreview() {
                 color: `${data?.title.color}`,
               }}
             >
-              {data?.title?.text || "Your Title"}
+              {data?.title?.text}
             </p>
           </div>
 

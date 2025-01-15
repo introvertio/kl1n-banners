@@ -1,7 +1,7 @@
 "use client";
 
-import { db, initializeDB } from "@/lib/db";
-import React, { useEffect } from "react";
+import { db } from "@/lib/db";
+import React from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import {
   bespokeFont,
@@ -12,6 +12,7 @@ import {
   supremeFont,
 } from "../../styling/font-classes";
 import Spinner from "../../loaders/Spinner";
+import FontSelector from "../selectors/FontSelector";
 
 const fonts = [
   { name: "Bespoke", value: bespokeFont },
@@ -52,31 +53,21 @@ export default function ControllerStepOne() {
 
   return (
     <div className=" w-full flex flex-col items-center justify-center">
-      <form className="flex flex-col gap-4">
-        <label className="flex flex-col">
-          Title Text:
-          <input
-            type="text"
-            name="text"
-            value={title?.text || ""}
-            onChange={(e) => handleChange("text", e.target.value)}
-            className="border border-gray-300 p-2 rounded"
-          />
-        </label>
-        <label className="flex flex-col">
-          Font:
-          <select
-            value={title?.font || fonts[0].value}
-            onChange={(e) => handleChange("font", e.target.value)}
-            className="border border-gray-300 p-2 rounded"
-          >
-            {fonts.map((font) => (
-              <option key={font.name} value={font.value}>
-                {font.name}
-              </option>
-            ))}
-          </select>
-        </label>
+      <div className="flex flex-col gap-1">
+        <input
+          type="text"
+          name="text"
+          value={title.text}
+          onChange={(e) => handleChange("text", e.target.value)}
+          className="border border-gray-300 p-2 rounded"
+        />
+        <FontSelector
+          fonts={fonts}
+          selectedFont={title.font}
+          onChange={(value) => handleChange("font", value)}
+          titleText={title.text}
+          italic={title.italic}
+        />
         <label className="flex flex-col">
           Font Weight:
           <input
@@ -129,7 +120,7 @@ export default function ControllerStepOne() {
           <option value="center">Center</option>
           <option value="right">Right</option>
         </select>
-      </form>
+      </div>
     </div>
   );
 }
