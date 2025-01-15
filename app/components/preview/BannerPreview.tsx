@@ -8,13 +8,13 @@ export default function BannerPreview() {
   const data = useLiveQuery(() => db.banner.get(1));
 
   return (
-    <div className="w-full h-fit bg-green-100 flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center gap-1 w-full mx-auto p-1">
+    <div className="w-full h-fit flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center gap-2 w-full mx-auto p-3">
         <span className="text-main-blue font-extrabold text-xs flex flex-row items-center justify-center gap-1 animate-pulse">
           <p>Live Preview</p>
           <div className="size-3 rounded-full bg-main-blue"></div>
         </span>
-        <div className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-2 shadow-lg">
+        <div className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-2 shadow">
           <div className="w-full h-1/3 flex items-center justify-center">
             <p
               className={` w-full ${data?.title?.font} ${
