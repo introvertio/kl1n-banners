@@ -15,6 +15,8 @@ import Spinner from "../../loaders/Spinner";
 import FontSelector from "../selectors/FontSelector";
 import ItalicSelector from "../selectors/ItalicSelector";
 import AlignSelector from "../selectors/AlignSelector";
+import FontWeightSelector from "../selectors/FontWeightSelector";
+import FontSizeSelector from "../selectors/FontSizeSelector";
 
 const fonts = [
   { name: "Bespoke", value: bespokeFont },
@@ -91,33 +93,14 @@ export default function ControllerStepOne() {
             onChange={(e) => handleChange("color", e.target.value)}
           />
         </div>
-        <label className="flex flex-col">
-          Font Weight:
-          <input
-            type="range"
-            name="fontWeight"
-            min={100}
-            max={900}
-            step={100}
-            value={title?.fontWeight || 400}
-            onChange={(e) =>
-              handleChange("fontWeight", parseInt(e.target.value))
-            }
-            className="border border-gray-300 p-2 rounded"
-          />
-        </label>
-        <label className="flex flex-col">
-          Font Size:
-          <input
-            type="range"
-            name="fontSize"
-            min={16}
-            max={100}
-            value={title.fontSize || 16}
-            onChange={(e) => handleChange("fontSize", parseInt(e.target.value))}
-            className="border border-gray-300 p-2 rounded"
-          />
-        </label>
+        <FontWeightSelector
+          weight={title.fontWeight}
+          onChange={(value) => handleChange("fontWeight", value)}
+        />
+        <FontSizeSelector
+          size={title.fontSize}
+          onChange={(value) => handleChange("fontSize", value)}
+        />
       </div>
     </div>
   );
