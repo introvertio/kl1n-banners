@@ -94,7 +94,7 @@ export default function ControllerStepOne() {
         <label className="flex flex-col">
           Font Weight:
           <input
-            type="number"
+            type="range"
             name="fontWeight"
             min={100}
             max={900}
@@ -106,11 +106,10 @@ export default function ControllerStepOne() {
             className="border border-gray-300 p-2 rounded"
           />
         </label>
-
         <label className="flex flex-col">
           Font Size:
           <input
-            type="number"
+            type="range"
             name="fontSize"
             min={16}
             max={100}
