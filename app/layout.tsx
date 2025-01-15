@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Generate Banners for your social media",
 };
 
-export const poppins = Poppins({
+const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   display: "swap",

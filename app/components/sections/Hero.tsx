@@ -3,7 +3,6 @@ import { cabinetFont, supremeFont } from "../styling/font-classes";
 import GitHub from "@/svgs/github.svg";
 import DynamicBannerNSkills from "../hero-section/DynamicBannerNSkills";
 import Link from "next/link";
-import { poppins } from "@/app/layout";
 
 export default function Hero() {
   return (
@@ -11,7 +10,7 @@ export default function Hero() {
       className={`h-[101svh] flex flex-col gap-2 md:gap-4 items-center justify-center snap-start w-full ${cabinetFont} relative bg-main-blue `}
     >
       <span
-        className={`flex flex-row gap-1 items-center justify-center font-semibold text-xl md:text-2xl text-white ${poppins.className}`}
+        className={`flex flex-row gap-1 items-center justify-center font-semibold text-xl md:text-2xl text-white font-[Poppins]`}
       >
         {`kl1n`}
         <div className="size-6 md:size-7 bg-white rounded-full"></div>
@@ -35,22 +34,23 @@ export default function Hero() {
       </div>
       <DynamicBannerNSkills />
       <br />
-      <Link
-        href={"#start"}
-        className="font-extrabold text-2xl py-2 px-20 text-main-blue bg-white rounded-full active:scale-105 transition-all px-4 py-2"
-      >
-        START
-      </Link>
+      <div className="flex flex-col gap-6 items-center justify-center">
+        <Link
+          href={"#start"}
+          className="font-extrabold text-xl md:text-2xl py-2 px-20 text-main-blue bg-white rounded-full active:scale-105 transition-all"
+        >
+          Get Started
+        </Link>
+        <a
+          target="_blank"
+          href="https://github.com/introvertio/kl1n-banners"
+          className="text-white text-xs font-bold flex flex-row gap-2 items-center justify-center bg-black rounded-full active:scale-105 transition-all px-4 py-2"
+        >
+          <GitHub />
+          Open Source
+        </a>
+      </div>
       <br />
-
-      <a
-        target="_blank"
-        href="https://github.com/introvertio/kl1n-banners"
-        className="text-white text-xs font-bold flex flex-row gap-2 items-center justify-center bg-black rounded-full active:scale-105 transition-all px-4 py-2"
-      >
-        <GitHub />
-        Open Source
-      </a>
     </section>
   );
 }

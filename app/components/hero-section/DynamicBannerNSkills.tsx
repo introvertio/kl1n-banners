@@ -19,7 +19,7 @@ interface SkillsRDescription {
 export default function DynamicBannerNSkills() {
   return (
     <div className="w-full flex flex-col gap-4 items-center justify-center text-white">
-      <div className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-center max-w-2xl font-bold">
+      <div className="w-full aspect-[820/310] text-black bg-white flex flex-col items-center justify-center max-w-2xl font-bold">
         <p className=" text-xl ">Dynamically Generated Banner</p>
         <small className="text-center">
           (Text below will be changing and so will the banner)
