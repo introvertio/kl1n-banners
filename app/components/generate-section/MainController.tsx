@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import ControllerStepOne from "./controller-steps/ControllerStepOne";
+import ControllerStepTwo from "./controller-steps/ControllerStepTwo";
+import ControllerStepThree from "./controller-steps/ControllerStepThree";
+import ControllerStepFour from "./controller-steps/ControllerStepFour";
 
 export default function MainController() {
   // Define the max and min steps
@@ -71,9 +74,9 @@ export default function MainController() {
       <div className="w-fit h-fit flex flex-col gap-2">
         {/* Render step content dynamically */}
         {currentStep === 1 && <ControllerStepOne />}
-        {currentStep === 2 && <div>Step 2 Content</div>}
-        {currentStep === 3 && <div>Step 3 Content</div>}
-        {currentStep === 4 && <div>Step 4 Content</div>}
+        {currentStep === 2 && <ControllerStepTwo />}
+        {currentStep === 3 && <ControllerStepThree />}
+        {currentStep === 4 && <ControllerStepFour />}
 
         {/* Navigation Buttons */}
         <div className="flex flex-row items-center justify-between w-full mt-4">
