@@ -14,7 +14,7 @@ const SkillsSelector: React.FC<SkillsSelectorProps> = ({
   onToggle,
 }) => {
   return (
-    <div className="flex flex-row flex-wrap gap-1 w-full h-20 overflow-auto rounded bg-gray-100 p-1">
+    <div className="flex flex-row flex-wrap gap-1 w-full h-28 overflow-auto rounded bg-gray-100 p-1">
       {skills.map((skill) => (
         <button
           key={skill}
