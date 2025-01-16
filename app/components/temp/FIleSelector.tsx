@@ -47,7 +47,7 @@ const FileSelector: React.FC = () => {
           </button>
         ))}
       </div>
-      <div className="flex flex-row gap-1 w-full">
+      <div className="flex flex-row flex-wrap gap-1 w-full">
         {selectedFiles.length > 0 ? (
           selectedFiles.map((file) => <p key={file}>{file}</p>)
         ) : (
