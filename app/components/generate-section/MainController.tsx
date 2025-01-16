@@ -88,7 +88,7 @@ export default function MainController() {
           {currentStep > MIN_STEP && (
             <button
               onClick={goToPreviousStep}
-              className="w-28 h-10 text-main-blue font-medium border-2 border-main-blue rounded-md mr-auto transition-all active:scale-95"
+              className="w-28 h-8 text-main-blue font-medium border-2 border-main-blue rounded-md mr-auto transition-all active:scale-95 text-sm"
             >
               Previous
             </button>
@@ -96,7 +96,7 @@ export default function MainController() {
           {currentStep < MAX_STEP && (
             <button
               onClick={goToNextStep}
-              className="w-28 h-10 bg-main-blue text-white font-medium border-4 border-main-blue rounded ml-auto transition-all active:scale-95"
+              className="w-28 h-8 bg-main-blue text-white font-medium border-4 border-main-blue rounded ml-auto transition-all active:scale-95 text-sm"
             >
               Next
             </button>

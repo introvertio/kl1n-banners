@@ -1,4 +1,4 @@
-import { cabinetFont } from "@/app/components/styling/font-classes";
+import { cabinetFont, poppinsFont } from "@/app/components/styling/font-classes";
 import { BannerData, Description, Title } from "@/types/banner";
 import Dexie, { Table } from "dexie";
 
@@ -17,7 +17,7 @@ export const db = new BannerDB();
 
 const defaultTitle: Title = {
   text: "Default Title",
-  font: cabinetFont,
+  font: poppinsFont,
   fontWeight: 500,
   italic: false,
   fontSize: 24,
@@ -30,7 +30,7 @@ const defaultDescription: Description = {
     text: "Default Description",
     skills : [],
     skillsSeperator: " , ",  
-    font: cabinetFont,
+    font: poppinsFont,
     fontWeight: 500,
     italic: false,
     fontSize: 16,
