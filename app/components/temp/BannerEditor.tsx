@@ -41,7 +41,7 @@ export default function BannerEditor() {
               <input
                 type="text"
                 name="description"
-                value={data.description}
+                value={data.description.text}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 rounded"
               />

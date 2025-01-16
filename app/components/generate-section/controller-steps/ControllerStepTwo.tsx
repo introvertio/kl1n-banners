@@ -1,7 +1,37 @@
 import React from "react";
 import FileSelector from "../../temp/FIleSelector";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "@/lib/db";
+import Spinner from "../../loaders/Spinner";
 
 export default function ControllerStepTwo() {
+  const data = useLiveQuery(() => db.banner.get(1), []);
+
+  const handleChange = async (
+    key: string,
+    value: string | number | boolean
+  ) => {
+    if (data) {
+      await db.banner.put({
+        ...data,
+        description: {
+          ...data.description,
+          [key]: value,
+        },
+      });
+    }
+  };
+
+  if (!data) {
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  }
+
+  const { description } = data;
+
   return (
     <div className=" w-[344px] flex flex-col items-center justify-center rounded p-2 shadow">
       <div className="flex flex-col gap-1 w-full">
@@ -18,7 +48,8 @@ export default function ControllerStepTwo() {
           <textarea
             className="shadow w-full rounded p-2 outline-none focus:ring-2 focus:ring-main-blue transition-all font-bold"
             maxLength={100}
-            defaultValue={`Default Description`}
+            onChange={(e) => handleChange("text", e.target.value)}
+            value={description.text}
           />
         </div>
         <small className="text-xs font-bold text-main-blue mx-auto">{`- or -`}</small>

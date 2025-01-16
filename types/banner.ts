@@ -13,7 +13,7 @@ export interface Description {
     useDescription: boolean;
     text: string; 
     skills : string[];
-    skillsSeperator: ", " | " - " | " / " | " ~ " | "";  
+    skillsSeperator: ", " | " - " | " / " | " | " | " ~ " | null ;  
     font: string; 
     fontWeight: number; 
     italic: boolean; 
@@ -25,7 +25,7 @@ export interface Description {
 export interface BannerData {
     id: number;
     title: Title;
-    description: string;
+    description: Description;
     tools: string;
   }
   

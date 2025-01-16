@@ -1,5 +1,5 @@
 import { cabinetFont } from "@/app/components/styling/font-classes";
-import { BannerData, Title } from "@/types/banner";
+import { BannerData, Description, Title } from "@/types/banner";
 import Dexie, { Table } from "dexie";
 
 class BannerDB extends Dexie {
@@ -25,6 +25,19 @@ const defaultTitle: Title = {
   alignment: "center",
 };
 
+const defaultDescription: Description = {
+    useDescription: true,
+    text: "Default Description",
+    skills : [],
+    skillsSeperator: ", ",  
+    font: cabinetFont,
+    fontWeight: 500,
+    italic: false,
+    fontSize: 16,
+    color: "#000000",
+    alignment: "center",
+  }
+
 // Initialize default data if it doesn't exist
 export async function initializeDB(): Promise<void> {
   const existing = await db.banner.get(1);
@@ -32,7 +45,7 @@ export async function initializeDB(): Promise<void> {
     await db.banner.put({
       id: 1,
       title: defaultTitle,
-      description: "Default Description",
+      description: defaultDescription,
       tools: "Default Tools",
     });
   }

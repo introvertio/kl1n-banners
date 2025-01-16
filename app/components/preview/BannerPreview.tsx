@@ -33,9 +33,23 @@ export default function BannerPreview() {
               {data?.title?.text}
             </p>
           </div>
-
           <div className="w-full h-1/3 flex items-center justify-center">
-            {data?.description || "Loading..."}
+            <p
+              className={` w-full ${data?.description?.font} ${
+                data?.description?.alignment == "left"
+                  ? "text-left"
+                  : data?.description?.alignment == "right"
+                  ? "text-right"
+                  : `text-center`
+              } ${data?.title?.italic ? "italic" : ""}`}
+              style={{
+                fontSize: `${data?.description?.fontSize}px`,
+                fontWeight: data?.description?.fontWeight,
+                color: `${data?.description.color}`,
+              }}
+            >
+              {data?.description.text}
+            </p>
           </div>
           <div className="w-full h-1/3 flex items-center justify-center">
             {data?.tools || "Loading..."}

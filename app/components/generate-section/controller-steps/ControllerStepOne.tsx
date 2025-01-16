@@ -8,6 +8,7 @@ import {
   cabinetFont,
   chillaxFont,
   exconFont,
+  fonts,
   satoshiFont,
   supremeFont,
 } from "../../styling/font-classes";
@@ -17,15 +18,6 @@ import ItalicSelector from "../selectors/ItalicSelector";
 import AlignSelector from "../selectors/AlignSelector";
 import FontWeightSelector from "../selectors/FontWeightSelector";
 import FontSizeSelector from "../selectors/FontSizeSelector";
-
-const fonts = [
-  { name: "Bespoke", value: bespokeFont },
-  { name: "Supreme", value: supremeFont },
-  { name: "Cabinet", value: cabinetFont },
-  { name: "Chillax", value: chillaxFont },
-  { name: "Satoshi", value: satoshiFont },
-  { name: "Excon", value: exconFont },
-];
 
 export default function ControllerStepOne() {
   const data = useLiveQuery(() => db.banner.get(1), []);
