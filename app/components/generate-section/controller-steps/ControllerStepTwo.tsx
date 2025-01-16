@@ -16,12 +16,12 @@ export default function ControllerStepTwo() {
             </button>
           </div>
           <textarea
-            className="shadow w-full rounded p-1 outline-none focus:ring-2 focus:ring-main-blue transition-all font-bold"
+            className="shadow w-[344px] rounded p-1 outline-none focus:ring-2 focus:ring-main-blue transition-all font-bold"
             maxLength={100}
             defaultValue={`Default Description`}
           />
         </div>
-        <small className="text-xs font-bold text-main-blue mx-auto">{`- OR -`}</small>
+        <small className="text-xs font-bold text-main-blue mx-auto">{`- or -`}</small>
         <div className="flex flex-col gap-2 w-full items-center justify-center">
           <div className="flex flex-row gap-2 w-full items-center justify-between">
             <p className="md:text-lg font-bold">Skills</p>
@@ -29,7 +29,6 @@ export default function ControllerStepTwo() {
               use Skills
             </button>
           </div>
-          <FileSelector />
         </div>
       </div>
     </div>

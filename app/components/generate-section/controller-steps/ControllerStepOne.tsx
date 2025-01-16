@@ -66,7 +66,7 @@ export default function ControllerStepOne() {
           name="text"
           value={title.text}
           onChange={(e) => handleChange("text", e.target.value)}
-          className=" shadow w-full p-2 rounded outline-none font-bold focus:ring-2 focus:ring-main-blue transition-all"
+          className=" shadow w-[344px] p-2 rounded outline-none font-bold focus:ring-2 focus:ring-main-blue transition-all"
         />
         <FontSelector
           fonts={fonts}

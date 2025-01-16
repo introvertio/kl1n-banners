@@ -12,9 +12,9 @@ export default function Home() {
     start();
   }, []);
   return (
-    <main className="min-h-svh w-svw overflow-scroll snap-y snap-mandatory scroll-smooth">
+    <main className="h-svh w-svw overflow-scroll snap-y snap-mandatory scroll-smooth">
       <Hero />
-      <section id="start" className="min-h-svh">
+      <section id="start" className="h-svh">
         <BannerGenerator />
       </section>
     </main>
