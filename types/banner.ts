@@ -8,12 +8,15 @@ export interface Title {
     alignment: "left" | "center" | "right"; 
   }
 
+export interface SkillSeperator{
+    seperator:" , " | " - " | " / " | " | " | " ~ " | null ;  
+}
 
 export interface Description {
     useDescription: boolean;
     text: string; 
     skills : string[];
-    skillsSeperator: ", " | " - " | " / " | " | " | " ~ " | null ;  
+    skillsSeperator: " , " | " - " | " / " | " | " | " ~ " | null ;  
     font: string; 
     fontWeight: number; 
     italic: boolean; 

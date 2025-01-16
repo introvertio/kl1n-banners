@@ -29,7 +29,7 @@ const defaultDescription: Description = {
     useDescription: true,
     text: "Default Description",
     skills : [],
-    skillsSeperator: ", ",  
+    skillsSeperator: " , ",  
     font: cabinetFont,
     fontWeight: 500,
     italic: false,
