@@ -7,10 +7,10 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section
-      className={`h-[101svh] flex flex-col gap-2 md:gap-4 items-center justify-center snap-start w-full ${cabinetFont} relative bg-main-blue `}
+      className={`h-[101svh] flex flex-col gap-2 md:gap-4 items-center justify-center snap-start w-full relative bg-main-blue `}
     >
       <span
-        className={`flex flex-row gap-1 items-center justify-center font-semibold text-xl md:text-2xl text-white font-[Poppins]`}
+        className={`flex flex-row gap-1 items-center justify-center font-semibold text-xl md:text-2xl text-white`}
       >
         {`kl1n`}
         <div className="size-6 md:size-7 bg-white rounded-full"></div>
@@ -26,9 +26,7 @@ export default function Hero() {
         <h1 className="text-[70px] [line-height:_.7] md:text-[90px] font-black text-main-blue [text-shadow:_-4px_4px_0px_#ffffff]">
           BANNERS
         </h1>
-        <p
-          className={` ${supremeFont} font-bold text-lg md:text-2xl mr-auto text-white`}
-        >
+        <p className={` font-bold text-lg md:text-2xl mr-auto text-white`}>
           for
         </p>
       </div>

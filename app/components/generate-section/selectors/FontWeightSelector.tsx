@@ -20,7 +20,7 @@ export default function FontWeightSelector({
 
   return (
     <div className="relative flex flex-col w-full h-full">
-      <p className="text-black font-bold text-xs mr-auto mb-2">Font Weight</p>
+      <p className="text-black font-medium text-xs mr-auto mb-2">Font Weight</p>
       <div className="flex gap-2">
         {fontWeights.map((fontWeight) => (
           <button

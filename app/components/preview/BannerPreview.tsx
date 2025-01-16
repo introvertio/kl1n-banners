@@ -23,11 +23,8 @@ export default function BannerPreview() {
 
   return (
     <div className="w-full h-fit flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center gap-2 w-full mx-auto p-3">
-        <span className="text-main-blue font-extrabold text-xs flex flex-row items-center justify-center gap-1 animate-pulse">
-          <p>Live Preview</p>
-          <div className="size-3 rounded-full bg-main-blue"></div>
-        </span>
+      <div className="flex flex-col items-center justify-center w-full mx-auto p-1">
+        <div className="w-full h-1 animate-pulse bg-main-blue"></div>
         <div className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-2 shadow">
           {/* Title Section */}
           <div className="w-full h-1/3 flex items-center justify-center">
@@ -69,13 +66,13 @@ export default function BannerPreview() {
               </p>
             ) : (
               <p
-                className={`w-full ${
+                className={`w-full ${data?.description?.font} ${
                   data?.description?.alignment == "left"
                     ? "text-left"
                     : data?.description?.alignment == "right"
                     ? "text-right"
                     : "text-center"
-                } ${data?.description?.italic ? "italic" : ""} `}
+                } ${data?.description?.italic ? "italic" : ""}`}
                 style={{
                   fontSize: `${data?.description?.fontSize}px`,
                   fontWeight: data?.description?.fontWeight,

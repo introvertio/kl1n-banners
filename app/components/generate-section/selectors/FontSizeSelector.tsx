@@ -11,7 +11,7 @@ export default function FontSizeSelector({
 }: FontSizeSelectorProps) {
   return (
     <div className="relative flex flex-col w-full h-full">
-      <p className="text-black font-bold text-xs mr-auto">Font Size</p>
+      <p className="text-black font-medium text-xs mr-auto">Font Size</p>
       <input
         type="range"
         min="16"

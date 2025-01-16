@@ -50,7 +50,7 @@ export default function ControllerStepOne() {
   return (
     <div className=" w-[344px] flex flex-col items-center justify-center rounded p-2 shadow">
       <div className="flex flex-col gap-2 w-full">
-        <p className="p-1 w-full text-center bg-main-blue text-white text-lg md:text-xl font-extrabold rounded">
+        <p className="p-1 w-full text-center bg-main-blue text-white text-lg md:text-xl font-semibold rounded">
           Title
         </p>
         <input
@@ -58,7 +58,7 @@ export default function ControllerStepOne() {
           name="text"
           value={title.text}
           onChange={(e) => handleChange("text", e.target.value)}
-          className=" shadow w-full p-2 rounded outline-none font-bold focus:ring-2 focus:ring-main-blue transition-all caret-main-blue"
+          className=" shadow w-full p-2 rounded outline-none font-medium focus:ring-2 focus:ring-main-blue transition-all caret-main-blue"
         />
         <FontSelector
           fonts={fonts}
@@ -89,7 +89,7 @@ export default function ControllerStepOne() {
           onChange={(value) => handleChange("fontSize", value)}
         />
         <div className="relative flex flex-col w-full h-full">
-          <p className="text-black font-bold text-xs mr-auto">Text color</p>
+          <p className="text-black font-medium text-xs mr-auto">Text color</p>
           <input
             className="w-full h-10 outline-none rounded active:scale-95 transition-all shadow "
             type="color"
