@@ -3,7 +3,7 @@ import FileSelector from "../../temp/FIleSelector";
 
 export default function ControllerStepTwo() {
   return (
-    <div className=" w-full flex flex-col items-center justify-center rounded p-2 shadow">
+    <div className=" w-[344px] flex flex-col items-center justify-center rounded p-2 shadow">
       <div className="flex flex-col gap-1 w-full">
         <p className="p-1 w-full text-center bg-main-blue text-white text-lg md:text-xl font-extrabold rounded">
           Description / Skills
@@ -16,7 +16,7 @@ export default function ControllerStepTwo() {
             </button>
           </div>
           <textarea
-            className="shadow w-[344px] rounded p-1 outline-none focus:ring-2 focus:ring-main-blue transition-all font-bold"
+            className="shadow w-full rounded p-2 outline-none focus:ring-2 focus:ring-main-blue transition-all font-bold"
             maxLength={100}
             defaultValue={`Default Description`}
           />
@@ -29,6 +29,7 @@ export default function ControllerStepTwo() {
               use Skills
             </button>
           </div>
+          <FileSelector />
         </div>
       </div>
     </div>

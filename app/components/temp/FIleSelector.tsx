@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import Add from "@/svgs/Add.svg";
+import Remove from "@/svgs/Remove.svg";
 
 const FileSelector: React.FC = () => {
   const [files] = useState<string[]>([
-    "File1.txt",
-    "File2.docx",
-    "File3.pdf",
-    "File4.png",
+    "Software Engineer",
+    "UI/UX Designer",
+    "Fullstack Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Devops Engineer",
   ]);
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
@@ -22,19 +26,24 @@ const FileSelector: React.FC = () => {
   };
 
   return (
-    <div className=" flex flex-col gap-1">
-      <div className="flex flex-wrap gap-1">
+    <div className=" flex flex-col gap-1 w-full">
+      <div className="flex flex-row flex-wrap gap-1 w-full h-28 items-center justify-center overflow-auto rounded bg-gray-200 p-1">
         {files.map((file) => (
           <button
             key={file}
             onClick={() => handleFileToggle(file)}
-            className={`p-1 px-4 text-xm rounded-full border ${
+            className={`flex flex-row gap-1 items-center justify-center p-1 h-fit px-3 rounded-full border font-bold ${
               selectedFiles.includes(file)
-                ? "bg-green-500 text-white border-green-500"
-                : "bg-gray-100 text-black border-gray-300"
-            } hover:shadow-md`}
+                ? "bg-main-blue text-white border-main-blue"
+                : "bg-white text-main-blue border-main-blue"
+            } transition-all active:scale-95`}
           >
-            {file}
+            <small>{file}</small>
+            {selectedFiles.includes(file) ? (
+              <Remove className={`scale-75`} />
+            ) : (
+              <Add className={`scale-75`} />
+            )}
           </button>
         ))}
       </div>

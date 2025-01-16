@@ -56,7 +56,7 @@ export default function ControllerStepOne() {
   const { title } = data;
 
   return (
-    <div className=" w-full flex flex-col items-center justify-center rounded p-2 shadow">
+    <div className=" w-[344px] flex flex-col items-center justify-center rounded p-2 shadow">
       <div className="flex flex-col gap-2 w-full">
         <p className="p-1 w-full text-center bg-main-blue text-white text-lg md:text-xl font-extrabold rounded">
           Title
@@ -66,7 +66,7 @@ export default function ControllerStepOne() {
           name="text"
           value={title.text}
           onChange={(e) => handleChange("text", e.target.value)}
-          className=" shadow w-[344px] p-2 rounded outline-none font-bold focus:ring-2 focus:ring-main-blue transition-all"
+          className=" shadow w-full p-2 rounded outline-none font-bold focus:ring-2 focus:ring-main-blue transition-all caret-main-blue"
         />
         <FontSelector
           fonts={fonts}
