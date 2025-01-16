@@ -23,8 +23,8 @@ export default function BannerPreview() {
 
   return (
     <div className="w-full h-fit flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center w-full mx-auto p-1">
-        <div className="w-full h-1 animate-pulse bg-main-blue"></div>
+      <div className="flex flex-col items-center justify-center gap-1 w-full mx-auto p-3">
+        <div className="w-full h-1 rounded animate-pulse bg-main-blue"></div>
         <div className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-2 shadow">
           {/* Title Section */}
           <div className="w-full h-1/3 flex items-center justify-center">
