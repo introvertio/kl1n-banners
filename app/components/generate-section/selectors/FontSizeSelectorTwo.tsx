@@ -1,28 +1,32 @@
 import React from "react";
 
-interface FontSizeSelectorProps {
+interface FontSizeSelectorTwoProps {
   size: number;
   onChange: (size: number) => void;
 }
 
-export default function FontSizeSelector({
+export default function FontSizeSelectorTwo({
   size,
   onChange,
-}: FontSizeSelectorProps) {
+}: FontSizeSelectorTwoProps) {
+  const min = 12;
+  const max = 50;
+
+  // Calculate the percentage for the gradient based on the current size
+  const percentage = ((size - min) / (max - min)) * 100;
+
   return (
     <div className="relative flex flex-col w-full h-full">
       <p className="text-black font-bold text-xs mr-auto">Font Size</p>
       <input
         type="range"
-        min="16"
-        max="100"
+        min={min}
+        max={max}
         value={size}
         onChange={(e) => onChange(parseInt(e.target.value))}
-        className="w-full h-10 bg-white shadow rounded appearance-none touch-none"
+        className="w-full h-10 bg-transparent shadow rounded appearance-none"
         style={{
-          background: `linear-gradient(to right, #011ea0ff 0%, #011ea0ff ${
-            ((size - 16) / 84) * 100
-          }%, #FFFFFF ${((size - 16) / 84) * 100}%, #FFFFFF 100%)`,
+          background: `linear-gradient(to right, #011ea0ff 0%, #011ea0ff ${percentage}%, #FFFFFF ${percentage}%, #FFFFFF 100%)`,
         }}
       />
       <style jsx>{`

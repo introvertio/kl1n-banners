@@ -75,7 +75,7 @@ export default function BannerPreview() {
                     : data?.description?.alignment == "right"
                     ? "text-right"
                     : "text-center"
-                } font-bold`}
+                } ${data?.description?.italic ? "italic" : ""} `}
                 style={{
                   fontSize: `${data?.description?.fontSize}px`,
                   fontWeight: data?.description?.fontWeight,

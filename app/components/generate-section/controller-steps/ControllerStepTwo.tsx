@@ -4,6 +4,10 @@ import { db } from "@/lib/db";
 import Spinner from "../../loaders/Spinner";
 import SkillsSelector from "../selectors/SkillsSelector";
 import SkillsSeparatorSelector from "../selectors/SkillsSeperatorSelector";
+import ItalicSelector from "../selectors/ItalicSelector";
+import AlignSelector from "../selectors/AlignSelector";
+import FontWeightSelector from "../selectors/FontWeightSelector";
+import FontSizeSelectorTwo from "../selectors/FontSizeSelectorTwo";
 
 export default function ControllerStepTwo() {
   const data = useLiveQuery(() => db.banner.get(1), []);
@@ -120,6 +124,36 @@ export default function ControllerStepTwo() {
               />
             </>
           )}
+        </div>
+        <div className="flex flex-row gap-1 items-end justify-between">
+          <ItalicSelector
+            isItalic={description.italic}
+            weight={description.fontWeight}
+            font={description.font}
+            onChange={(value) => handleChange("italic", value)}
+          />
+          <AlignSelector
+            alignment={description.alignment}
+            onChange={(value) => handleChange("alignment", value)}
+          />
+        </div>
+        <FontWeightSelector
+          font={description.font}
+          weight={description.fontWeight}
+          onChange={(value) => handleChange("fontWeight", value)}
+        />
+        <FontSizeSelectorTwo
+          size={description.fontSize}
+          onChange={(value) => handleChange("fontSize", value)}
+        />
+        <div className="relative flex flex-col w-full h-full">
+          <p className="text-black font-bold text-xs mr-auto">Text color</p>
+          <input
+            className="w-full h-10 outline-none rounded active:scale-95 transition-all shadow "
+            type="color"
+            value={description.color}
+            onChange={(e) => handleChange("color", e.target.value)}
+          />
         </div>
       </div>
     </div>
