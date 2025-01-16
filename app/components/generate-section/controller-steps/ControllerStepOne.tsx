@@ -56,8 +56,11 @@ export default function ControllerStepOne() {
   const { title } = data;
 
   return (
-    <div className=" w-full flex flex-col items-center justify-center">
-      <div className="flex flex-col gap-3">
+    <div className=" w-full flex flex-col items-center justify-center rounded p-2 shadow">
+      <div className="flex flex-col gap-2 w-full">
+        <p className="p-1 w-full text-center bg-main-blue text-white teext-lg md:text-xl font-extrabold rounded">
+          Title
+        </p>
         <input
           type="text"
           name="text"
@@ -84,15 +87,6 @@ export default function ControllerStepOne() {
             onChange={(value) => handleChange("alignment", value)}
           />
         </div>
-        <div className="relative flex flex-col w-full h-full">
-          <p className="text-black font-bold text-xs mr-auto">Text color</p>
-          <input
-            className="w-full h-10 outline-none rounded active:scale-95 transition-all shadow "
-            type="color"
-            value={title.color}
-            onChange={(e) => handleChange("color", e.target.value)}
-          />
-        </div>
         <FontWeightSelector
           font={title.font}
           weight={title.fontWeight}
@@ -102,6 +96,15 @@ export default function ControllerStepOne() {
           size={title.fontSize}
           onChange={(value) => handleChange("fontSize", value)}
         />
+        <div className="relative flex flex-col w-full h-full">
+          <p className="text-black font-bold text-xs mr-auto">Text color</p>
+          <input
+            className="w-full h-10 outline-none rounded active:scale-95 transition-all shadow "
+            type="color"
+            value={title.color}
+            onChange={(e) => handleChange("color", e.target.value)}
+          />
+        </div>
       </div>
     </div>
   );

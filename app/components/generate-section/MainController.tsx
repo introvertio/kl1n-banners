@@ -70,20 +70,25 @@ export default function MainController() {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center p-2">
-      <div className="w-fit h-fit flex flex-col gap-2">
+    <div className="w-full h-full flex flex-col items-center justify-center p-1">
+      <div className="w-full h-fit flex flex-col gap-2">
         {/* Render step content dynamically */}
-        {currentStep === 1 && <ControllerStepOne />}
-        {currentStep === 2 && <ControllerStepTwo />}
-        {currentStep === 3 && <ControllerStepThree />}
-        {currentStep === 4 && <ControllerStepFour />}
+        {currentStep === 1 ? (
+          <ControllerStepOne />
+        ) : currentStep === 2 ? (
+          <ControllerStepTwo />
+        ) : currentStep === 3 ? (
+          <ControllerStepThree />
+        ) : (
+          <ControllerStepFour />
+        )}
 
         {/* Navigation Buttons */}
-        <div className="flex flex-row items-center justify-between w-full mt-4">
+        <div className="flex flex-row items-center gap-4 justify-between w-full">
           {currentStep > MIN_STEP && (
             <button
               onClick={goToPreviousStep}
-              className="w-28 h-14 text-main-blue font-bold border-4 border-main-blue rounded-md mr-auto transition-all active:scale-95"
+              className="w-28 h-10 text-main-blue font-bold border-2 border-main-blue rounded-md mr-auto transition-all active:scale-95"
             >
               Previous
             </button>
@@ -91,7 +96,7 @@ export default function MainController() {
           {currentStep < MAX_STEP && (
             <button
               onClick={goToNextStep}
-              className="w-28 h-14 bg-main-blue text-white font-bold border-4 border-main-blue rounded ml-auto transition-all active:scale-95"
+              className="w-28 h-10 bg-main-blue text-white font-bold border-4 border-main-blue rounded ml-auto transition-all active:scale-95"
             >
               Next
             </button>

@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className="h-svh w-svw overflow-scroll snap-y snap-mandatory scroll-smooth">
       <Hero />
-      <section id="start">
+      <section id="start" className="min-h-svh">
         <BannerGenerator />
       </section>
     </main>
