@@ -1,5 +1,5 @@
 import React from "react";
-import ToolOrStackSelector from "../selectors/ToolOrStackSelector";
+import ToolOrStackSelector from "../../temp/ToolOrStackSelector";
 
 export default function ControllerStepThree() {
   return (

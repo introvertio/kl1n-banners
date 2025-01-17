@@ -26,17 +26,17 @@ const defaultTitle: Title = {
 };
 
 const defaultDescription: Description = {
-    useDescription: true,
-    text: "Default Description",
-    skills : [],
-    skillsSeperator: " , ",  
-    font: poppinsFont,
-    fontWeight: 500,
-    italic: false,
-    fontSize: 16,
-    color: "#000000",
-    alignment: "center",
-  }
+  useDescription: true,
+  text: "Default Description",
+  skills: [],
+  skillsSeperator: " , ",
+  font: poppinsFont,
+  fontWeight: 500,
+  italic: false,
+  fontSize: 16,
+  color: "#000000",
+  alignment: "center",
+};
 
 // Initialize default data if it doesn't exist
 export async function initializeDB(): Promise<void> {
@@ -48,5 +48,19 @@ export async function initializeDB(): Promise<void> {
       description: defaultDescription,
       tools: "Default Tools",
     });
+  }
+}
+
+// Function to delete the first item and reinitialize the database
+export async function resetFirstItemAndInitializeDB(): Promise<void> {
+  try {
+    const firstItem = await db.banner.get(1);
+    if (firstItem) {
+      await db.banner.delete(firstItem.id);
+    }
+    await initializeDB();
+  } catch (error) {
+    console.error("Error resetting the database:", error);
+    throw new Error("Failed to reset the database.");
   }
 }
