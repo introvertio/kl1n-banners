@@ -1,4 +1,5 @@
 import React from "react";
+import ToolOrStackSelector from "../selectors/ToolOrStackSelector";
 
 export default function ControllerStepThree() {
   return (
@@ -8,7 +9,7 @@ export default function ControllerStepThree() {
           Tools / Stack
         </p>
       </div>
-      ControllerStepThree
+      <ToolOrStackSelector />
     </div>
   );
 }

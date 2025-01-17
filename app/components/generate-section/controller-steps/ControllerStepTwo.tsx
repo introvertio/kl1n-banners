@@ -10,6 +10,7 @@ import FontWeightSelector from "../selectors/FontWeightSelector";
 import FontSizeSelectorTwo from "../selectors/FontSizeSelectorTwo";
 import FontSelector from "../selectors/FontSelector";
 import { fonts } from "../../styling/font-classes";
+import { skills } from "../../static/skiils";
 
 export default function ControllerStepTwo() {
   const data = useLiveQuery(() => db.banner.get(1), []);
@@ -55,15 +56,6 @@ export default function ControllerStepTwo() {
   }
 
   const { description } = data;
-
-  const skills = [
-    "Software Engineer",
-    "UI/UX Designer",
-    "Fullstack Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "DevOps Engineer",
-  ];
 
   const separators = [" , ", " - ", " / ", " | ", " ~ ", null] as const;
 
