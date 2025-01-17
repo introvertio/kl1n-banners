@@ -70,7 +70,7 @@ export default function MainController() {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center p-1">
+    <div className="w-full h-full flex flex-col items-center justify-center p-1 mb-2 md:mb-0">
       <div className="w-fit h-fit flex flex-col gap-2">
         {/* Render step content dynamically */}
         {currentStep === 1 ? (

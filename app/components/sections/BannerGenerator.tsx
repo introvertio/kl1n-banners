@@ -6,7 +6,7 @@ import { cabinetFont } from "../styling/font-classes";
 export default function BannerGenerator() {
   return (
     <section
-      className={`h-[115svh] md:h-svh overflow-y-auto flex flex-col md:flex-row items-center justify-center snap-start w-full relative `}
+      className={`min-h-svh h-full md:h-svh overflow-y-auto flex flex-col md:flex-row items-center justify-center snap-start w-full relative `}
     >
       <BannerPreview />
       <MainController />
