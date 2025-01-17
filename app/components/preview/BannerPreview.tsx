@@ -3,6 +3,7 @@
 import React from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/lib/db";
+import ClearDatabase from "../generate-section/ClearDatabase";
 
 export default function BannerPreview() {
   const data = useLiveQuery(() => db.banner.get(1));
@@ -88,6 +89,7 @@ export default function BannerPreview() {
             {data?.tools || "Loading..."}
           </div>
         </div>
+        <ClearDatabase />
       </div>
     </div>
   );
