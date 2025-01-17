@@ -10,6 +10,7 @@ export default function ClearDatabase() {
   const handleReset = async () => {
     try {
       await resetFirstItemAndInitializeDB();
+      setSure(false);
     } catch (error) {
       alert("An error occurred while resetting the database.");
     }
