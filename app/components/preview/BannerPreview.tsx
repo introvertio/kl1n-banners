@@ -84,7 +84,7 @@ export default function BannerPreview() {
             )}
           </div>
           {/* Tools Section */}
-          <div className="w-full h-1/3 flex items-center justify-center">
+          <div className="w-full h-1/3 flex items-center justify-center font-medium">
             {data?.tools || "Loading..."}
           </div>
         </div>
