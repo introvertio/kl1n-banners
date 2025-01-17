@@ -28,75 +28,71 @@ export default function BannerPreview() {
     };
 
     return (
-      <div className="w-full h-fit flex flex-col items-center justify-center">
-        <div className="flex flex-col items-center justify-center gap-1 w-full mx-auto p-3">
-          <div className=" h-1 w-1/2 rounded animate-pulse bg-main-blue"></div>
-          <div className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-2 shadow-sm">
-            {/* Title Section */}
-            <div className="w-full h-1/3 flex items-center justify-center">
+      <div className="w-full h-fit flex flex-col gap-1 items-center justify-center p-3 bg-main-blue/20">
+        <div className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-2">
+          {/* Title Section */}
+          <div className="w-full h-1/3 flex items-center justify-center">
+            <p
+              className={`w-full ${title.font} ${
+                title.alignment == "left"
+                  ? "text-left"
+                  : title.alignment == "right"
+                  ? "text-right"
+                  : "text-center"
+              } ${title.italic ? "italic" : ""}`}
+              style={{
+                fontSize: `${title.fontSize}px`,
+                fontWeight: title.fontWeight,
+                color: `${title.color}`,
+              }}
+            >
+              {title.text}
+            </p>
+          </div>
+          {/* Description/Skills Section */}
+          <div className="w-full h-1/3 flex items-center justify-center">
+            {description.useDescription ? (
               <p
-                className={`w-full ${title.font} ${
-                  title.alignment == "left"
+                className={`w-full ${description.font} ${
+                  description.alignment == "left"
                     ? "text-left"
-                    : title.alignment == "right"
+                    : description.alignment == "right"
                     ? "text-right"
                     : "text-center"
-                } ${title.italic ? "italic" : ""}`}
+                } ${description.italic ? "italic" : ""}`}
                 style={{
-                  fontSize: `${title.fontSize}px`,
-                  fontWeight: title.fontWeight,
-                  color: `${title.color}`,
+                  fontSize: `${description.fontSize}px`,
+                  fontWeight: description.fontWeight,
+                  color: `${description.color}`,
                 }}
               >
-                {title.text}
+                {description.text}
               </p>
-            </div>
-            {/* Description/Skills Section */}
-            <div className="w-full h-1/3 flex items-center justify-center">
-              {description.useDescription ? (
-                <p
-                  className={`w-full ${description.font} ${
-                    description.alignment == "left"
-                      ? "text-left"
-                      : description.alignment == "right"
-                      ? "text-right"
-                      : "text-center"
-                  } ${description.italic ? "italic" : ""}`}
-                  style={{
-                    fontSize: `${description.fontSize}px`,
-                    fontWeight: description.fontWeight,
-                    color: `${description.color}`,
-                  }}
-                >
-                  {description.text}
-                </p>
-              ) : (
-                <p
-                  className={`w-full ${description.font} ${
-                    description.alignment == "left"
-                      ? "text-left"
-                      : description.alignment == "right"
-                      ? "text-right"
-                      : "text-center"
-                  } ${description.italic ? "italic" : ""}`}
-                  style={{
-                    fontSize: `${description.fontSize}px`,
-                    fontWeight: description.fontWeight,
-                    color: `${description.color}`,
-                  }}
-                >
-                  {renderSkills()}
-                </p>
-              )}
-            </div>
-            {/* Tools Section */}
-            <div className="w-full h-1/3 flex items-center justify-center font-medium">
-              {tools || "Loading..."}
-            </div>
+            ) : (
+              <p
+                className={`w-full ${description.font} ${
+                  description.alignment == "left"
+                    ? "text-left"
+                    : description.alignment == "right"
+                    ? "text-right"
+                    : "text-center"
+                } ${description.italic ? "italic" : ""}`}
+                style={{
+                  fontSize: `${description.fontSize}px`,
+                  fontWeight: description.fontWeight,
+                  color: `${description.color}`,
+                }}
+              >
+                {renderSkills()}
+              </p>
+            )}
           </div>
-          <div className=" h-1 w-1/2 rounded animate-pulse bg-main-blue"></div>
-          <ClearDatabase />
+          {/* Tools Section */}
+          <div className="w-full h-1/3 flex items-center justify-center font-medium">
+            {tools || "Loading..."}
+          </div>
         </div>
+        <ClearDatabase />
       </div>
     );
   } else {
