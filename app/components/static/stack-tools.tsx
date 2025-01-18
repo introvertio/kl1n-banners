@@ -55,6 +55,14 @@ import {
   SiTerraform,
   SiAnsible,
   SiTrpc,
+  SiEthereum,
+  SiBitcoin,
+  SiBinance,
+  SiSolidity,
+  SiWeb3Dotjs as SiWeb3dotjs,
+  SiPolkadot,
+  SiChainlink,
+  SiIpfs,
 } from "react-icons/si";
 
 interface TechItem {
@@ -127,4 +135,14 @@ export const tools: TechItem[] = [
   { name: "Mocha", icon: <SiMocha /> },
   { name: "Chai", icon: <SiChai /> },
   { name: "Cypress", icon: <SiCypress /> },
+
+  // Blockchain / Web3 / Crypto Tools
+  { name: "Ethereum", icon: <SiEthereum /> },
+  { name: "Bitcoin", icon: <SiBitcoin /> },
+  { name: "Binance Smart Chain", icon: <SiBinance /> },
+  { name: "Solidity", icon: <SiSolidity /> },
+  { name: "Web3.js", icon: <SiWeb3dotjs /> },
+  { name: "Polkadot", icon: <SiPolkadot /> },
+  { name: "Chainlink", icon: <SiChainlink /> },
+  { name: "IPFS", icon: <SiIpfs /> },
 ];

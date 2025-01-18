@@ -1,28 +1,14 @@
 import React, { useState } from "react";
-import {
-  FaReact,
-  FaNodeJs,
-  FaPython,
-  FaJava,
-  FaAngular,
-  FaDocker,
-} from "react-icons/fa";
-import {
-  SiTypescript,
-  SiKubernetes,
-  SiMongodb,
-  SiPostgresql,
-  SiGit,
-} from "react-icons/si";
 import { tools } from "../static/stack-tools";
 
 const ToolOrStackSelector: React.FC = () => {
   // Predefined icons
   const icons = tools;
 
-  // State for color and selected icons
+  // State for color, selected icons, and search term
   const [color, setColor] = useState<string>("#000000");
   const [selectedIcons, setSelectedIcons] = useState<number[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   // Toggle icon selection
   const toggleIcon = (id: number) => {
@@ -31,46 +17,73 @@ const ToolOrStackSelector: React.FC = () => {
     );
   };
 
+  // Filter icons based on search term
+  const filteredIcons = icons
+    .map((icon, index) => ({ ...icon, id: index })) // Add the original index as `id`
+    .filter(({ name }) =>
+      name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
   return (
-    <div className="w-full p-4 space-y-4">
-      {/* Color Picker */}
-      <div className="flex items-center gap-4">
-        <label htmlFor="colorPicker" className="font-medium text-gray-700">
-          Select Icon Color:
-        </label>
-        <input
-          id="colorPicker"
-          type="color"
-          value={color}
-          onChange={(e) => setColor(e.target.value)}
-          className="w-12 h-12 border rounded"
-        />
+    <div className="flex flex-col gap-2 mt-2 w-full">
+      {/* Selected Icons */}
+      <div className="flex flex-wrap gap-2 p-2 bg-gray-100 rounded border border-gray-300 w-full">
+        {selectedIcons.length > 0 ? (
+          selectedIcons.map((id) => {
+            const { name, icon } = icons[id];
+            return (
+              <button
+                key={id}
+                onClick={() => toggleIcon(id)}
+                className="flex items-center gap-2 p-2 px-4 border border-main-blue bg-main-blue text-white rounded-full transition-all hover:bg-red-500"
+                title={`Remove ${name}`}
+              >
+                <div className="text-xl">{icon}</div>
+                <small>{name}</small>
+              </button>
+            );
+          })
+        ) : (
+          <p className="text-gray-500">No icons selected.</p>
+        )}
       </div>
 
-      {/* Icons Grid */}
-      <div className="flex flex-row gap-1 flex-wrap">
-        {icons.map(({ name, icon }, id) => (
-          <button
-            key={id}
-            onClick={() => toggleIcon(id)}
-            className={`flex flex-row gap-1 items-center justify-center p-2 border rounded-lg transition-all ${
-              selectedIcons.includes(id)
-                ? "bg-main-blue text-white border-main-blue"
-                : "bg-white text-gray-700 border-gray-300"
-            } active:scale-95`}
-            title={name}
-          >
-            <div
-              className=" text-[20px] "
-              style={{
-                color: selectedIcons.includes(id) ? "#ffffff" : "#000000",
-              }}
+      {/* Search Bar */}
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search..."
+        className="w-full h-10 shadow p-2 text-sm rounded outline-none focus:ring-2 focus:ring-main-blue transition-all"
+      />
+
+      {/* Icons */}
+      <div className="flex flex-row flex-wrap gap-2 w-full h-60 overflow-auto rounded bg-main-blue/10 p-2 border border-gray-300">
+        {filteredIcons.length > 0 ? (
+          filteredIcons.map(({ name, icon, id }) => (
+            <button
+              key={id}
+              onClick={() => toggleIcon(id)}
+              className={`flex flex-row gap-2 items-center justify-center p-2 px-4 h-fit w-fit rounded-full transition-all font-medium ${
+                selectedIcons.includes(id)
+                  ? "bg-main-blue text-white"
+                  : "bg-white text-main-blue"
+              } active:scale-95 border border-main-blue`}
+              title={name}
             >
-              {icon}
-            </div>
-            <span className="mt-2 text-sm">{name}</span>
-          </button>
-        ))}
+              <div
+                className={`text-xl ${
+                  selectedIcons.includes(id) ? "text-white" : "text-main-blue"
+                }`}
+              >
+                {icon}
+              </div>
+              <small>{name}</small>
+            </button>
+          ))
+        ) : (
+          <p className="text-gray-500">No icons match your search.</p>
+        )}
       </div>
     </div>
   );
