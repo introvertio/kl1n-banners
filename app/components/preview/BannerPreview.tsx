@@ -28,7 +28,7 @@ export default function BannerPreview() {
     };
 
     return (
-      <div className="w-full h-fit flex flex-col gap-1 items-center justify-center p-3 bg-main-blue/20">
+      <div className="w-full h-fit flex flex-col gap-1 items-center justify-center p-1 bg-main-blue/20">
         <div className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-2">
           {/* Title Section */}
           <div className="w-full h-1/3 flex items-center justify-center">
