@@ -71,7 +71,7 @@ interface TechItem {
   icon: ReactNode;
 }
 
-export const tools: TechItem[] = [
+export const toolOptions: TechItem[] = [
   // Languages
   { name: "JavaScript", icon: <SiJavascript /> },
   { name: "TypeScript", icon: <SiTypescript /> },

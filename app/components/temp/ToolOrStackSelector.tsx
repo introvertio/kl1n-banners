@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { tools } from "../static/stack-tools";
+import { toolOptions } from "../static/stack-tools";
 import Add from "@/svgs/Add.svg";
 import Remove from "@/svgs/Remove.svg";
 
 const ToolOrStackSelector: React.FC = () => {
   // Predefined icons
-  const icons = tools;
+  const icons = toolOptions;
 
   // State for color, selected icons, and search term
   const [color, setColor] = useState<string>("#000000");
@@ -47,7 +47,9 @@ const ToolOrStackSelector: React.FC = () => {
             );
           })
         ) : (
-          <small className="text-black font-medium">Select your stack!</small>
+          <small className="text-main-blue font-medium">
+            Select your stack!
+          </small>
         )}
       </div>
 
@@ -61,7 +63,7 @@ const ToolOrStackSelector: React.FC = () => {
       />
 
       {/* Icons */}
-      <div className="flex flex-row flex-wrap gap-1 w-full h-40 overflow-auto rounded bg-main-blue/10 p-1 border border-gray-300">
+      <div className="flex flex-row flex-wrap gap-1 w-full h-40 overflow-auto rounded bg-main-blue/5 p-1 border border-main-blue/50">
         {filteredIcons.length > 0 ? (
           filteredIcons.map(({ name, icon, id }) => (
             <button
@@ -90,7 +92,9 @@ const ToolOrStackSelector: React.FC = () => {
             </button>
           ))
         ) : (
-          <p className="text-gray-500">No icons match your search.</p>
+          <small className="text-main-blue font-medium">
+            No icons match your search.
+          </small>
         )}
       </div>
     </div>

@@ -2,10 +2,11 @@
 
 import React from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "@/lib/db";
+import { db, resetFirstItemAndInitializeDB } from "@/lib/db";
 import ClearDatabase from "../generate-section/ClearDatabase";
 import Spinner from "../loaders/Spinner";
 import Download from "@/svgs/Download.svg";
+import { toolOptions } from "../static/stack-tools";
 
 export default function BannerPreview() {
   const data = useLiveQuery(() => db.banner.get(1));
@@ -14,6 +15,17 @@ export default function BannerPreview() {
     const { title } = data;
     const { description } = data;
     const { tools } = data;
+
+    async function Cleanup() {
+      if (!tools.tools) await resetFirstItemAndInitializeDB();
+    }
+    Cleanup();
+    const matchedTools = tools.tools.map((tool) => {
+      const match = toolOptions.find(
+        (item) => item.name.toLowerCase() === tool.toLowerCase()
+      );
+      return match || { name: tool, icon: null }; // Fallback if no icon is found
+    });
 
     const renderSkills = () => {
       if (description.skills.length > 0) {
@@ -88,9 +100,18 @@ export default function BannerPreview() {
               </p>
             )}
           </div>
-          {/* Tools Section */}
           <div className="w-full h-1/3 flex items-center justify-center font-medium">
-            {tools || "Loading..."}
+            {tools.tools ? (
+              <>
+                {matchedTools.map(({ name, icon }, id) => (
+                  <div key={id} title={name} className="text-2xl">
+                    {icon || "🛠"}
+                  </div>
+                ))}
+              </>
+            ) : (
+              <small>add your tools</small>
+            )}
           </div>
         </div>
         <div className=" flex flex-row items-center justify-center gap-2">

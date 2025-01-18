@@ -25,10 +25,17 @@ export interface Description {
     alignment: "left" | "center" | "right";
   }
 
+  export interface Tools {
+    tools : string[];
+    fontSize: number; 
+    color: string;
+    alignment: "left" | "center" | "right";
+  }
+
 export interface BannerData {
     id: number;
     title: Title;
     description: Description;
-    tools: string;
+    tools: Tools;
   }
   
