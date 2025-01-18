@@ -136,7 +136,7 @@ export default function BannerPreview() {
                 </span>
               ))
             ) : (
-              <small>Add your tools</small>
+              <></>
             )}
           </p>
         </div>

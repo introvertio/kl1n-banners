@@ -3,15 +3,7 @@
 import { db } from "@/lib/db";
 import React from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import {
-  bespokeFont,
-  cabinetFont,
-  chillaxFont,
-  exconFont,
-  fonts,
-  satoshiFont,
-  supremeFont,
-} from "../../styling/font-classes";
+import { fonts } from "../../styling/font-classes";
 import Spinner from "../../loaders/Spinner";
 import FontSelector from "../selectors/FontSelector";
 import ItalicSelector from "../selectors/ItalicSelector";

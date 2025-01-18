@@ -66,7 +66,7 @@ import {
   SiIpfs,
 } from "react-icons/si";
 
-interface TechItem {
+export interface TechItem {
   name: string;
   icon: ReactNode;
 }
