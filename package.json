@@ -11,6 +11,7 @@
   "dependencies": {
     "dexie": "^4.0.10",
     "dexie-react-hooks": "^1.1.7",
+    "html-to-image": "^1.11.11",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

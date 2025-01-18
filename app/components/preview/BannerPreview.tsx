@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db, resetFirstItemAndInitializeDB } from "@/lib/db";
 import ClearDatabase from "../generate-section/ClearDatabase";
 import Spinner from "../loaders/Spinner";
 import Download from "@/svgs/Download.svg";
 import { toolOptions } from "../static/stack-tools";
+import { toPng } from "html-to-image";
 
 export default function BannerPreview() {
   const data = useLiveQuery(() => db.banner.get(1));
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Cleanup database structure if needed
@@ -75,9 +77,31 @@ export default function BannerPreview() {
     </p>
   );
 
+  const handleDownload = async () => {
+    if (bannerRef.current) {
+      try {
+        const dataUrl = await toPng(bannerRef.current, {
+          quality: 1.0,
+          pixelRatio: 3, // Increases resolution
+          skipAutoScale: true,
+        });
+
+        const link = document.createElement("a");
+        link.download = "kl1n-banner.png";
+        link.href = dataUrl;
+        link.click();
+      } catch (error) {
+        console.error("Error generating image:", error);
+      }
+    }
+  };
+
   return (
     <div className="w-full h-fit flex flex-col gap-4 items-center justify-center p-2 bg-main-blue/20">
-      <div className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-4">
+      <div
+        ref={bannerRef}
+        className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-4"
+      >
         {/* Title Section */}
         <div className="w-full h-1/3 flex items-center justify-center">
           {renderText(
@@ -144,7 +168,10 @@ export default function BannerPreview() {
 
       {/* Action Buttons */}
       <div className="flex flex-row items-center justify-center gap-2">
-        <button className="flex flex-row gap-1 text-white items-center justify-center font-semibold bg-main-blue rounded w-32 h-8 shadow transition-all active:scale-95">
+        <button
+          onClick={handleDownload}
+          className="flex flex-row gap-1 text-white items-center justify-center font-semibold bg-main-blue rounded w-32 h-8 shadow transition-all active:scale-95"
+        >
           <small>Download</small> <Download />
         </button>
         <ClearDatabase />
