@@ -25,7 +25,7 @@ export default function ToolsSelector({
   );
 
   return (
-    <div className="flex flex-col gap-1 mt-2 w-full">
+    <div className="flex flex-col gap-1 w-full">
       {/* Selected Icons */}
       <div className="flex flex-row flex-wrap gap-1 p-1 bg-main-blue/5 rounded border border-main-blue/50 w-full h-20 overflow-auto">
         {selectedTools.length > 0 ? (
@@ -38,7 +38,7 @@ export default function ToolsSelector({
               <button
                 key={id}
                 onClick={() => onToggle(name)}
-                className="flex items-center gap-1 p-2 px-4 h-fit w-fit border border-main-blue bg-main-blue text-white rounded-full transition-all hover:bg-red-500 hover:border-red-500"
+                className="flex items-center gap-1 p-2 px-4 h-fit w-fit border border-main-blue bg-main-blue text-white rounded-full transition-all active:scale-95"
                 title={`Remove ${name}`}
               >
                 <div className="text-xl">{tool?.icon || "🛠"}</div>

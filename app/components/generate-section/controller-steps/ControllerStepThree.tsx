@@ -5,6 +5,9 @@ import Spinner from "../../loaders/Spinner";
 import ToolsSelector from "../selectors/ToolsSelector";
 import { toolOptions } from "../../static/stack-tools";
 import ToolOrStackSelector from "../../temp/ToolOrStackSelector";
+import AlignSelector from "../selectors/AlignSelector";
+import FontWeightSelector from "../selectors/FontWeightSelector";
+import FontSizeSelectorTwo from "../selectors/FontSizeSelectorTwo";
 
 export default function ControllerStepThree() {
   const data = useLiveQuery(() => db.banner.get(1), []);
@@ -48,12 +51,31 @@ export default function ControllerStepThree() {
         <p className="p-1 w-full text-center bg-main-blue text-white text-lg md:text-xl font-semibold rounded">
           Tools / Stack
         </p>
+        <ToolsSelector
+          tools={toolOptions}
+          selectedTools={tools.tools}
+          onToggle={(value) => handleToolToggle(value)}
+        />
+        <div className="flex flex-row items-center justify-center gap-1">
+          <div className="relative flex flex-col w-full h-full">
+            <input
+              className="w-full h-10 outline-none rounded active:scale-95 transition-all shadow "
+              type="color"
+              value={tools.color}
+              onChange={(e) => handleChange("color", e.target.value)}
+            />
+          </div>
+          <AlignSelector
+            alignment={tools.alignment}
+            onChange={(value) => handleChange("alignment", value)}
+          />
+        </div>
+
+        <FontSizeSelectorTwo
+          size={tools.fontSize}
+          onChange={(value) => handleChange("fontSize", value)}
+        />
       </div>
-      <ToolsSelector
-        tools={toolOptions}
-        selectedTools={tools.tools}
-        onToggle={(value) => handleToolToggle(value)}
-      />
     </div>
   );
 }
