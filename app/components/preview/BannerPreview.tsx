@@ -116,19 +116,29 @@ export default function BannerPreview() {
 
         {/* Tools Section */}
         <div className="w-full h-1/3 flex flex-wrap gap-2 items-center justify-center font-medium">
-          {matchedTools?.length > 0 ? (
-            matchedTools.map(({ name, icon }, id) => (
-              <div
-                key={id}
-                title={name}
-                className="flex items-center gap-2 text-2xl bg-gray-100 p-2 rounded shadow-md"
-              >
-                {icon || "🛠"}
-              </div>
-            ))
-          ) : (
-            <small>Add your tools</small>
-          )}
+          <p
+            className={`w-full ${
+              tools.alignment === "left"
+                ? "text-left"
+                : tools.alignment === "right"
+                ? "text-right"
+                : "text-center"
+            }`}
+            style={{
+              fontSize: `${tools.fontSize}px`,
+              color: tools.color,
+            }}
+          >
+            {matchedTools?.length > 0 ? (
+              matchedTools.map(({ name, icon }, id) => (
+                <span key={id} title={name} className="inline-block mx-1">
+                  {icon || "🛠"}
+                </span>
+              ))
+            ) : (
+              <small>Add your tools</small>
+            )}
+          </p>
         </div>
       </div>
 

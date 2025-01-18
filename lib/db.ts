@@ -40,7 +40,7 @@ const defaultDescription: Description = {
 
 const defaultTools: Tools = {
     tools: ["Typescript"],
-    fontSize: 16,
+    fontSize: 24,
     color: "#000000",
     alignment: "center",
   };
