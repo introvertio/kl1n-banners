@@ -5,6 +5,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/lib/db";
 import ClearDatabase from "../generate-section/ClearDatabase";
 import Spinner from "../loaders/Spinner";
+import Download from "@/svgs/Download.svg";
 
 export default function BannerPreview() {
   const data = useLiveQuery(() => db.banner.get(1));
@@ -92,7 +93,12 @@ export default function BannerPreview() {
             {tools || "Loading..."}
           </div>
         </div>
-        <ClearDatabase />
+        <div className=" flex flex-row items-center justify-center gap-2">
+          <button className="flex flex-row gap-1 text-white items-center justify-center font-semibold bg-main-blue rounded w-32 h-8 shadow transition-all active:scale-95">
+            <small>Download</small> <Download />
+          </button>
+          <ClearDatabase />
+        </div>
       </div>
     );
   } else {

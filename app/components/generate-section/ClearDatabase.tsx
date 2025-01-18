@@ -18,17 +18,17 @@ export default function ClearDatabase() {
 
   return (
     <div
-      className={` flex flex-row gap-1 items-center justify-center w-38 h-10 ml-auto`}
+      className={` flex flex-row gap-1 items-center justify-center w-38 h-10`}
     >
       {sure && (
         <>
           {" "}
-          <small className="font-semibold text-xs">Are you sure?</small>{" "}
+          <small className="font-semibold text-sm">You sure?</small>{" "}
           <button
             onClick={() => {
               setSure(!sure);
             }}
-            className={` bg-main-blue/70 text-white font-semibold rounded shadow  transition-all active:scale-95 flex flex-row items-center justify-center h-8 w-20`}
+            className={` bg-main-blue/70 text-white font-semibold rounded shadow transition-all active:scale-95 flex flex-row items-center justify-center h-8 w-20`}
           >
             <small>Cancel</small>
           </button>
@@ -42,7 +42,7 @@ export default function ClearDatabase() {
             setSure(!sure);
           }
         }}
-        className={` bg-red-600 text-white font-semibold rounded shadow  transition-all active:scale-95 flex flex-row items-center justify-center h-8 w-20`}
+        className={` bg-red-600 text-white font-semibold rounded shadow transition-all active:scale-95 flex flex-row items-center justify-center h-8 w-20`}
       >
         <small>{sure ? `Yes` : `Clear`}</small>
         <Clear />
