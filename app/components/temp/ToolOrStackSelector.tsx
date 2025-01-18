@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { tools } from "../static/stack-tools";
+import Add from "@/svgs/Add.svg";
+import Remove from "@/svgs/Remove.svg";
 
 const ToolOrStackSelector: React.FC = () => {
   // Predefined icons
@@ -25,9 +27,9 @@ const ToolOrStackSelector: React.FC = () => {
     );
 
   return (
-    <div className="flex flex-col gap-2 mt-2 w-full">
+    <div className="flex flex-col gap-1 mt-2 w-full">
       {/* Selected Icons */}
-      <div className="flex flex-wrap gap-2 p-2 bg-gray-100 rounded border border-gray-300 w-full">
+      <div className="flex flex-row flex-wrap gap-1 p-1 bg-main-blue/5 rounded border border-main-blue/50 w-full h-20  overflow-auto">
         {selectedIcons.length > 0 ? (
           selectedIcons.map((id) => {
             const { name, icon } = icons[id];
@@ -35,16 +37,17 @@ const ToolOrStackSelector: React.FC = () => {
               <button
                 key={id}
                 onClick={() => toggleIcon(id)}
-                className="flex items-center gap-2 p-2 px-4 border border-main-blue bg-main-blue text-white rounded-full transition-all hover:bg-red-500"
+                className="flex items-center gap-1 p-2 px-4 h-fit w-fit border border-main-blue bg-main-blue text-white rounded-full transition-all hover:bg-red-500 hover:border-red-500"
                 title={`Remove ${name}`}
               >
                 <div className="text-xl">{icon}</div>
-                <small>{name}</small>
+                <small className="font-medium">{name}</small>
+                <Remove className={`scale-75`} />
               </button>
             );
           })
         ) : (
-          <p className="text-gray-500">No icons selected.</p>
+          <small className="text-black font-medium">Select your stack!</small>
         )}
       </div>
 
@@ -58,13 +61,13 @@ const ToolOrStackSelector: React.FC = () => {
       />
 
       {/* Icons */}
-      <div className="flex flex-row flex-wrap gap-2 w-full h-60 overflow-auto rounded bg-main-blue/10 p-2 border border-gray-300">
+      <div className="flex flex-row flex-wrap gap-1 w-full h-40 overflow-auto rounded bg-main-blue/10 p-1 border border-gray-300">
         {filteredIcons.length > 0 ? (
           filteredIcons.map(({ name, icon, id }) => (
             <button
               key={id}
               onClick={() => toggleIcon(id)}
-              className={`flex flex-row gap-2 items-center justify-center p-2 px-4 h-fit w-fit rounded-full transition-all font-medium ${
+              className={`flex flex-row gap-1 items-center justify-center p-2 px-4 h-fit w-fit rounded-full transition-all font-medium ${
                 selectedIcons.includes(id)
                   ? "bg-main-blue text-white"
                   : "bg-white text-main-blue"
@@ -79,6 +82,11 @@ const ToolOrStackSelector: React.FC = () => {
                 {icon}
               </div>
               <small>{name}</small>
+              {selectedIcons.includes(id) ? (
+                <Remove className={`scale-75`} />
+              ) : (
+                <Add className={`scale-75`} />
+              )}
             </button>
           ))
         ) : (

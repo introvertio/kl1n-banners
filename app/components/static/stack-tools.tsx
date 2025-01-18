@@ -57,6 +57,7 @@ import {
   SiTrpc,
   SiEthereum,
   SiBitcoin,
+  SiSolana,
   SiBinance,
   SiSolidity,
   SiWeb3Dotjs as SiWeb3dotjs,
@@ -139,6 +140,7 @@ export const tools: TechItem[] = [
   // Blockchain / Web3 / Crypto Tools
   { name: "Ethereum", icon: <SiEthereum /> },
   { name: "Bitcoin", icon: <SiBitcoin /> },
+  { name: "Solana", icon: <SiSolana /> },
   { name: "Binance Smart Chain", icon: <SiBinance /> },
   { name: "Solidity", icon: <SiSolidity /> },
   { name: "Web3.js", icon: <SiWeb3dotjs /> },
