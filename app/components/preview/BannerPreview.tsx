@@ -16,10 +16,12 @@ export default function BannerPreview() {
     const { description } = data;
     const { tools } = data;
 
+    //clean up incase user db has not updated for new tools structure
     async function Cleanup() {
       if (!tools.tools) await resetFirstItemAndInitializeDB();
     }
     Cleanup();
+
     const matchedTools = tools.tools.map((tool) => {
       const match = toolOptions.find(
         (item) => item.name.toLowerCase() === tool.toLowerCase()
