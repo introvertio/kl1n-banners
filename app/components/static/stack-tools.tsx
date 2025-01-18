@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import {
   FaReact,
   FaNodeJs,
@@ -5,12 +6,125 @@ import {
   FaJava,
   FaAngular,
   FaDocker,
+  FaPhp,
+  FaHtml5,
+  FaCss3,
+  FaSwift,
 } from "react-icons/fa";
 import {
   SiTypescript,
+  SiJavascript,
+  SiKotlin,
+  SiRuby,
+  SiDotnet,
+  SiDjango,
+  SiFlask,
+  SiFastapi,
   SiKubernetes,
   SiMongodb,
   SiPostgresql,
-  SiGit,
-  SiDjango,
+  SiMysql,
+  SiRedis,
+  SiGraphql,
+  SiNextdotjs,
+  SiVuedotjs,
+  SiNuxtdotjs,
+  SiTailwindcss,
+  SiBootstrap,
+  SiSass,
+  SiJquery,
+  SiElectron,
+  SiWebpack,
+  SiVite,
+  SiJest,
+  SiMocha,
+  SiChai,
+  SiCypress,
+  SiPostman,
+  SiFigma,
+  SiGatsby,
+  SiReactrouter,
+  SiPrisma,
+  SiLaravel,
+  SiSpringboot,
+  SiFirebase,
+  SiSupabase,
+  SiElasticsearch,
+  SiWebassembly,
+  SiKibana,
+  SiTerraform,
+  SiAnsible,
+  SiTrpc,
 } from "react-icons/si";
+
+interface TechItem {
+  name: string;
+  icon: ReactNode;
+}
+
+export const tools: TechItem[] = [
+  // Languages
+  { name: "JavaScript", icon: <SiJavascript /> },
+  { name: "TypeScript", icon: <SiTypescript /> },
+  { name: "Python", icon: <FaPython /> },
+  { name: "Java", icon: <FaJava /> },
+  { name: ".NET", icon: <SiDotnet /> },
+  { name: "PHP", icon: <FaPhp /> },
+  { name: "Ruby", icon: <SiRuby /> },
+  { name: "Kotlin", icon: <SiKotlin /> },
+  { name: "Swift", icon: <FaSwift /> },
+  { name: "HTML5", icon: <FaHtml5 /> },
+  { name: "CSS3", icon: <FaCss3 /> },
+
+  // Frontend Frameworks and Libraries
+  { name: "React", icon: <FaReact /> },
+  { name: "Next.js", icon: <SiNextdotjs /> },
+  { name: "Vue.js", icon: <SiVuedotjs /> },
+  { name: "Nuxt.js", icon: <SiNuxtdotjs /> },
+  { name: "Angular", icon: <FaAngular /> },
+  { name: "Gatsby", icon: <SiGatsby /> },
+  { name: "React Router", icon: <SiReactrouter /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+  { name: "Bootstrap", icon: <SiBootstrap /> },
+  { name: "Sass", icon: <SiSass /> },
+  { name: "jQuery", icon: <SiJquery /> },
+
+  // Backend Frameworks and Libraries
+  { name: "Node.js", icon: <FaNodeJs /> },
+  { name: "Django", icon: <SiDjango /> },
+  { name: "Flask", icon: <SiFlask /> },
+  { name: "FastAPI", icon: <SiFastapi /> },
+  { name: "Laravel", icon: <SiLaravel /> },
+  { name: "Spring Boot", icon: <SiSpringboot /> },
+  { name: "GraphQL", icon: <SiGraphql /> },
+  { name: "TRPC", icon: <SiTrpc /> },
+  { name: "Prisma", icon: <SiPrisma /> },
+
+  // Databases
+  { name: "MongoDB", icon: <SiMongodb /> },
+  { name: "PostgreSQL", icon: <SiPostgresql /> },
+  { name: "MySQL", icon: <SiMysql /> },
+  { name: "Redis", icon: <SiRedis /> },
+  { name: "Firebase", icon: <SiFirebase /> },
+  { name: "Supabase", icon: <SiSupabase /> },
+  { name: "Elasticsearch", icon: <SiElasticsearch /> },
+  { name: "Kibana", icon: <SiKibana /> },
+
+  // Tools and Platforms
+  { name: "Docker", icon: <FaDocker /> },
+  { name: "Kubernetes", icon: <SiKubernetes /> },
+  { name: "Webpack", icon: <SiWebpack /> },
+  { name: "Vite", icon: <SiVite /> },
+  { name: "Electron", icon: <SiElectron /> },
+  { name: "Postman", icon: <SiPostman /> },
+  { name: "Figma", icon: <SiFigma /> },
+  { name: "Terraform", icon: <SiTerraform /> },
+  { name: "Ansible", icon: <SiAnsible /> },
+  { name: "WebAssembly", icon: <SiWebassembly /> },
+
+  // Testing Libraries
+  { name: "Jest", icon: <SiJest /> },
+  { name: "Mocha", icon: <SiMocha /> },
+  { name: "Chai", icon: <SiChai /> },
+  { name: "Cypress", icon: <SiCypress /> },
+];

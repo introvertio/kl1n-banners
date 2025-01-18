@@ -14,22 +14,11 @@ import {
   SiPostgresql,
   SiGit,
 } from "react-icons/si";
+import { tools } from "../static/stack-tools";
 
 const ToolOrStackSelector: React.FC = () => {
   // Predefined icons
-  const icons = [
-    { id: 1, name: "React", icon: <FaReact /> },
-    { id: 2, name: "Node.js", icon: <FaNodeJs /> },
-    { id: 3, name: "Python", icon: <FaPython /> },
-    { id: 4, name: "Java", icon: <FaJava /> },
-    { id: 5, name: "Angular", icon: <FaAngular /> },
-    { id: 6, name: "Docker", icon: <FaDocker /> },
-    { id: 7, name: "TypeScript", icon: <SiTypescript /> },
-    { id: 8, name: "Kubernetes", icon: <SiKubernetes /> },
-    { id: 9, name: "MongoDB", icon: <SiMongodb /> },
-    { id: 10, name: "PostgreSQL", icon: <SiPostgresql /> },
-    { id: 11, name: "Git", icon: <SiGit /> },
-  ];
+  const icons = tools;
 
   // State for color and selected icons
   const [color, setColor] = useState<string>("#000000");
@@ -59,12 +48,12 @@ const ToolOrStackSelector: React.FC = () => {
       </div>
 
       {/* Icons Grid */}
-      <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6">
-        {icons.map(({ id, name, icon }) => (
+      <div className="flex flex-row gap-1 flex-wrap">
+        {icons.map(({ name, icon }, id) => (
           <button
             key={id}
             onClick={() => toggleIcon(id)}
-            className={`flex flex-col items-center justify-center p-2 border rounded-lg transition-all ${
+            className={`flex flex-row gap-1 items-center justify-center p-2 border rounded-lg transition-all ${
               selectedIcons.includes(id)
                 ? "bg-main-blue text-white border-main-blue"
                 : "bg-white text-gray-700 border-gray-300"
@@ -72,9 +61,9 @@ const ToolOrStackSelector: React.FC = () => {
             title={name}
           >
             <div
+              className=" text-[20px] "
               style={{
-                color: selectedIcons.includes(id) ? "#fff" : color,
-                fontSize: "2rem",
+                color: selectedIcons.includes(id) ? "#ffffff" : "#000000",
               }}
             >
               {icon}
