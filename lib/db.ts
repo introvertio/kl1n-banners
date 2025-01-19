@@ -1,4 +1,4 @@
-import { cabinetFont, poppinsFont } from "@/app/components/styling/font-classes";
+import { poppinsFont } from "@/app/components/styling/font-classes";
 import { BannerData, Description, Title, Tools } from "@/types/banner";
 import Dexie, { Table } from "dexie";
 

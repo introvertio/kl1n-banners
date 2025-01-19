@@ -72,6 +72,7 @@ export default function ControllerStepThree() {
         </div>
 
         <FontSizeSelectorTwo
+          justSize
           size={tools.fontSize}
           onChange={(value) => handleChange("fontSize", value)}
         />

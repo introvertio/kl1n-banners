@@ -1,11 +1,13 @@
 import React from "react";
 
 interface FontSizeSelectorTwoProps {
+  justSize?: boolean;
   size: number;
   onChange: (size: number) => void;
 }
 
 export default function FontSizeSelectorTwo({
+  justSize,
   size,
   onChange,
 }: FontSizeSelectorTwoProps) {
@@ -17,7 +19,9 @@ export default function FontSizeSelectorTwo({
 
   return (
     <div className="relative flex flex-col w-full h-full">
-      <p className="text-black font-medium text-xs mr-auto">Font Size</p>
+      <p className="text-black font-medium text-xs mr-auto">
+        {justSize ? "Size" : "Font Size"}
+      </p>
       <input
         type="range"
         min={min}
