@@ -186,7 +186,7 @@ export default function BannerPreview() {
   };
 
   return (
-    <div className="w-full h-fit flex flex-col gap-4 items-center justify-center p-2 bg-main-blue/20">
+    <div className="w-full h-fit flex flex-col gap-2 items-center justify-center p-2 bg-main-blue/20">
       <div
         style={{
           background: background.useGradient
