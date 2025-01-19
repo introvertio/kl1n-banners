@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db, resetFirstItemAndInitializeDB } from "@/lib/db";
 import ClearDatabase from "../generate-section/ClearDatabase";
@@ -8,10 +8,12 @@ import Spinner from "../loaders/Spinner";
 import Download from "@/svgs/Download.svg";
 import { toolOptions } from "../static/stack-tools";
 import { toPng } from "html-to-image";
+import SmallSpinner from "../loaders/SmallSpinner";
 
 export default function BannerPreview() {
   const data = useLiveQuery(() => db.banner.get(1));
   const bannerRef = useRef<HTMLDivElement>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
     // Cleanup database structure if needed
@@ -79,11 +81,16 @@ export default function BannerPreview() {
 
   const handleDownload = async () => {
     if (bannerRef.current) {
+      setIsGenerating(true);
       try {
+        // To make sure fonts are loaded completely. LEAVE THIS AS IS!!
+        const dataUr = await toPng(bannerRef.current, {
+          quality: 1.0,
+          pixelRatio: window.devicePixelRatio * 6,
+        });
         const dataUrl = await toPng(bannerRef.current, {
           quality: 1.0,
-          pixelRatio: 3, // Increases resolution
-          skipAutoScale: true,
+          pixelRatio: window.devicePixelRatio * 6,
         });
 
         const link = document.createElement("a");
@@ -92,6 +99,8 @@ export default function BannerPreview() {
         link.click();
       } catch (error) {
         console.error("Error generating image:", error);
+      } finally {
+        setIsGenerating(false);
       }
     }
   };
@@ -100,7 +109,7 @@ export default function BannerPreview() {
     <div className="w-full h-fit flex flex-col gap-4 items-center justify-center p-2 bg-main-blue/20">
       <div
         ref={bannerRef}
-        className="w-full aspect-[820/310] bg-white flex flex-col items-center justify-between max-w-2xl font-bold p-4"
+        className="w-full aspect-[3/1] bg-white flex flex-col items-center justify-between font-bold p-4 overflow-hidden"
       >
         {/* Title Section */}
         <div className="w-full h-1/3 flex items-center justify-center">
@@ -170,9 +179,12 @@ export default function BannerPreview() {
       <div className="flex flex-row items-center justify-center gap-2">
         <button
           onClick={handleDownload}
-          className="flex flex-row gap-1 text-white items-center justify-center font-semibold bg-main-blue rounded w-32 h-8 shadow transition-all active:scale-95"
+          disabled={isGenerating}
+          className={`flex flex-row gap-1 text-white items-center justify-center font-semibold bg-main-blue rounded w-32 h-10 shadow transition-all active:scale-95 disabled:opacity-70`}
         >
-          <small>Download</small> <Download />
+          {!isGenerating && <small>Download</small>}
+          {isGenerating && <SmallSpinner isWhite />}
+          {!isGenerating && <Download />}
         </button>
         <ClearDatabase />
       </div>
