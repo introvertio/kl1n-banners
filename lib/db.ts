@@ -1,5 +1,5 @@
 import { poppinsFont } from "@/app/components/styling/font-classes";
-import { BannerData, Description, Title, Tools } from "@/types/banner";
+import { Background, BannerData, Description, Title, Tools } from "@/types/banner";
 import Dexie, { Table } from "dexie";
 
 class BannerDB extends Dexie {
@@ -45,6 +45,16 @@ const defaultTools: Tools = {
     alignment: "center",
   };
 
+const defaultBackground: Background = {
+  useGradient: false,
+  color: "#ffffff",
+  gradientStart: "#ffffff",
+  gradientMiddle: null,
+  gradientEnd: "#ffffff",
+  gradientType: "linear",
+  gradientAngle: 90,
+};
+
 // Initialize default data if it doesn't exist
 export async function initializeDB(): Promise<void> {
   const existing = await db.banner.get(1);
@@ -54,6 +64,7 @@ export async function initializeDB(): Promise<void> {
       title: defaultTitle,
       description: defaultDescription,
       tools: defaultTools,
+      background: defaultBackground,
     });
   }
 }

@@ -32,10 +32,21 @@ export interface Description {
     alignment: "left" | "center" | "right";
   }
 
+export interface Background {
+  useGradient: boolean;
+  color: string;
+  gradientStart: string;
+  gradientMiddle: string | null;
+  gradientEnd: string;
+  gradientType: "linear" | "radial";
+  gradientAngle: number;
+}
+
 export interface BannerData {
     id: number;
     title: Title;
     description: Description;
     tools: Tools;
+    background: Background;
   }
   

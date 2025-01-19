@@ -18,7 +18,7 @@ export default function BannerPreview() {
   useEffect(() => {
     // Cleanup database structure if needed
     async function cleanup() {
-      if (data && !data.tools?.tools) {
+      if (data && (!data.tools?.tools || !data.background)) {
         await resetFirstItemAndInitializeDB();
       }
     }
@@ -34,7 +34,7 @@ export default function BannerPreview() {
     );
   }
 
-  const { title, description, tools } = data;
+  const { title, description, tools, background } = data;
 
   // Match tools with icons
   const matchedTools = tools?.tools?.map((tool) => {
@@ -108,6 +108,23 @@ export default function BannerPreview() {
   return (
     <div className="w-full h-fit flex flex-col gap-4 items-center justify-center p-2 bg-main-blue/20">
       <div
+        style={{
+          background: background.useGradient
+            ? background.gradientType === "radial"
+              ? `radial-gradient(circle, ${background.gradientStart}, ${
+                  background.gradientMiddle
+                    ? background.gradientMiddle
+                    : background.gradientStart
+                }, ${background.gradientEnd})`
+              : `linear-gradient(${background.gradientAngle}deg, ${
+                  background.gradientStart
+                }, ${
+                  background.gradientMiddle
+                    ? background.gradientMiddle
+                    : background.gradientStart
+                }, ${background.gradientEnd})`
+            : background.color,
+        }}
         ref={bannerRef}
         className="w-full aspect-[3/1] bg-white flex flex-col items-center justify-between font-bold p-4 overflow-hidden"
       >
