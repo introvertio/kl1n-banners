@@ -36,7 +36,7 @@ export default function BannerPreview() {
 
   if (!data) {
     return (
-      <div className="w-full h-fit flex flex-col items-center justify-center">
+      <div className="w-full aspect-[3/1] flex flex-col items-center justify-center">
         <Spinner />
       </div>
     );
