@@ -74,6 +74,29 @@ export default function ControllerStepFour() {
             </>
           ) : (
             <div className="w-full flex flex-col gap-1">
+              <div className="flex flex-row items-center justify-between w-full">
+                <button
+                  onClick={() => handleChange("gradientType", "linear")}
+                  className={`${
+                    background.gradientType !== "linear"
+                      ? `bg-white text-black`
+                      : `bg-main-blue text-white`
+                  } h-9 w-36 rounded shadow transition-all active:scale-95 text-sm font-medium`}
+                >
+                  Linear
+                </button>{" "}
+                <small className="text-xs font-medium text-main-blue mx-auto">{`or`}</small>
+                <button
+                  onClick={() => handleChange("gradientType", "radial")}
+                  className={`${
+                    background.gradientType !== "radial"
+                      ? `bg-white text-black`
+                      : `bg-main-blue text-white`
+                  } h-9 w-36 rounded shadow transition-all active:scale-95 text-sm font-medium`}
+                >
+                  Radial
+                </button>
+              </div>
               <>
                 <p className="text-black font-medium text-xs mr-auto">
                   Start Color
@@ -123,10 +146,12 @@ export default function ControllerStepFour() {
               </>
             </div>
           )}
-          <GradientAngleSelector
-            value={background.gradientAngle}
-            onChange={(value) => handleChange("gradientAngle", value)}
-          />
+          {background.gradientType === "linear" && background.useGradient && (
+            <GradientAngleSelector
+              value={background.gradientAngle}
+              onChange={(value) => handleChange("gradientAngle", value)}
+            />
+          )}
         </div>
       </div>
     </div>
