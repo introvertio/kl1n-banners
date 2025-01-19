@@ -61,6 +61,7 @@ export async function initializeDB(): Promise<void> {
   if (!existing) {
     await db.banner.put({
       id: 1,
+      order: [0, 1, 2],
       title: defaultTitle,
       description: defaultDescription,
       tools: defaultTools,

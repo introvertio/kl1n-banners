@@ -44,6 +44,7 @@ export interface Background {
 
 export interface BannerData {
     id: number;
+    order: number[];
     title: Title;
     description: Description;
     tools: Tools;

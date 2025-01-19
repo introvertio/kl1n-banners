@@ -9,22 +9,30 @@ import Download from "@/svgs/Download.svg";
 import { toolOptions } from "../static/stack-tools";
 import { toPng } from "html-to-image";
 import SmallSpinner from "../loaders/SmallSpinner";
+import { Reorder } from "framer-motion";
 
 export default function BannerPreview() {
   const data = useLiveQuery(() => db.banner.get(1));
   const bannerRef = useRef<HTMLDivElement>(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [items, setItems] = useState<number[]>([0, 1, 2]);
 
   useEffect(() => {
     // Cleanup database structure if needed
     async function cleanup() {
-      if (data && (!data.tools?.tools || !data.background)) {
+      if (data && (!data.tools?.tools || !data.background || !data.order)) {
         await resetFirstItemAndInitializeDB();
       }
     }
 
     cleanup();
   }, [data]);
+
+  useEffect(() => {
+    if (data?.order) {
+      setItems(data.order);
+    }
+  }, [data?.order]);
 
   if (!data) {
     return (
@@ -34,7 +42,7 @@ export default function BannerPreview() {
     );
   }
 
-  const { title, description, tools, background } = data;
+  const { title, description, tools, background, order } = data;
 
   // Match tools with icons
   const matchedTools = tools?.tools?.map((tool) => {
@@ -79,6 +87,69 @@ export default function BannerPreview() {
     </p>
   );
 
+  const renderSection = (sectionId: number) => {
+    switch (sectionId) {
+      case 0:
+        return renderText(
+          title.text,
+          title.color,
+          title.font,
+          title.fontWeight,
+          title.fontSize,
+          title.alignment,
+          title.italic
+        );
+      case 1:
+        return description.useDescription
+          ? renderText(
+              description.text,
+              description.color,
+              description.font,
+              description.fontWeight,
+              description.fontSize,
+              description.alignment,
+              description.italic
+            )
+          : renderText(
+              renderSkills(),
+              description.color,
+              description.font,
+              description.fontWeight,
+              description.fontSize,
+              description.alignment,
+              description.italic
+            );
+      case 2:
+        return (
+          <p
+            className={`w-full ${
+              tools.alignment === "left"
+                ? "text-left"
+                : tools.alignment === "right"
+                ? "text-right"
+                : "text-center"
+            }`}
+            style={{
+              fontSize: `${tools.fontSize}px`,
+              color: tools.color,
+            }}
+          >
+            {matchedTools?.length > 0 ? (
+              matchedTools.map(({ name, icon }, id) => (
+                <span key={id} title={name} className="inline-block mx-1">
+                  {icon || "🛠"}
+                </span>
+              ))
+            ) : (
+              <></>
+            )}
+          </p>
+        );
+      default:
+        return null;
+    }
+  };
+
   const handleDownload = async () => {
     if (bannerRef.current) {
       setIsGenerating(true);
@@ -105,6 +176,15 @@ export default function BannerPreview() {
     }
   };
 
+  const handleOrderChange = async (newOrder: number[]) => {
+    if (data) {
+      await db.banner.put({
+        ...data,
+        order: newOrder,
+      });
+    }
+  };
+
   return (
     <div className="w-full h-fit flex flex-col gap-4 items-center justify-center p-2 bg-main-blue/20">
       <div
@@ -126,70 +206,27 @@ export default function BannerPreview() {
             : background.color,
         }}
         ref={bannerRef}
-        className="w-full aspect-[3/1] bg-white flex flex-col items-center justify-between font-bold p-4 overflow-hidden"
+        className="w-full aspect-[3/1] bg-white flex flex-col items-center justify-between font-bold p-2 md:p-4 overflow-hidden"
       >
-        {/* Title Section */}
-        <div className="w-full h-1/3 flex items-center justify-center">
-          {renderText(
-            title.text,
-            title.color,
-            title.font,
-            title.fontWeight,
-            title.fontSize,
-            title.alignment,
-            title.italic
-          )}
-        </div>
-
-        {/* Description/Skills Section */}
-        <div className="w-full h-1/3 flex items-center justify-center">
-          {description.useDescription
-            ? renderText(
-                description.text,
-                description.color,
-                description.font,
-                description.fontWeight,
-                description.fontSize,
-                description.alignment,
-                description.italic
-              )
-            : renderText(
-                renderSkills(),
-                description.color,
-                description.font,
-                description.fontWeight,
-                description.fontSize,
-                description.alignment,
-                description.italic
-              )}
-        </div>
-
-        {/* Tools Section */}
-        <div className="w-full h-1/3 flex flex-wrap gap-2 items-center justify-center font-medium">
-          <p
-            className={`w-full ${
-              tools.alignment === "left"
-                ? "text-left"
-                : tools.alignment === "right"
-                ? "text-right"
-                : "text-center"
-            }`}
-            style={{
-              fontSize: `${tools.fontSize}px`,
-              color: tools.color,
-            }}
-          >
-            {matchedTools?.length > 0 ? (
-              matchedTools.map(({ name, icon }, id) => (
-                <span key={id} title={name} className="inline-block mx-1">
-                  {icon || "🛠"}
-                </span>
-              ))
-            ) : (
-              <></>
-            )}
-          </p>
-        </div>
+        <Reorder.Group
+          values={items}
+          onReorder={(newOrder) => {
+            setItems(newOrder);
+            handleOrderChange(newOrder);
+          }}
+          axis="y"
+          className="w-full h-full flex flex-col justify-between"
+        >
+          {items.map((section, id) => (
+            <Reorder.Item
+              key={section}
+              value={section}
+              className="w-full h-1/3 flex items-center justify-center cursor-move"
+            >
+              {renderSection(section)}
+            </Reorder.Item>
+          ))}
+        </Reorder.Group>
       </div>
 
       {/* Action Buttons */}
