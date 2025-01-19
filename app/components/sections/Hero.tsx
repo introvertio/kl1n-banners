@@ -31,7 +31,7 @@ export default function Hero() {
         </p>
       </div>
       <DynamicBannerNSkills />
-      <br />
+      <div className="h-5"></div>
       <div className="flex flex-col gap-6 items-center justify-center">
         <Link
           href={"#start"}

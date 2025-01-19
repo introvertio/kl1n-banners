@@ -11,6 +11,7 @@ export default function ClearDatabase() {
     try {
       await resetFirstItemAndInitializeDB();
       setSure(false);
+      window.location.href = "#start";
     } catch (error) {
       alert("An error occurred while resetting the database.");
     }

@@ -10,7 +10,7 @@ export default function GradientAngleSelector({
   onChange,
 }: GradientAngleSelectorProps) {
   const min = 0;
-  const max = 180;
+  const max = 270;
 
   // Calculate the percentage for the gradient based on the current size
   const percentage = ((value - min) / (max - min)) * 100;
