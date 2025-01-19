@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import React from "react";
 import Spinner from "../../loaders/Spinner";
+import GradientAngleSelector from "../selectors/GradientAngleSelector";
 
 export default function ControllerStepFour() {
   const data = useLiveQuery(() => db.banner.get(1), []);
@@ -72,7 +73,7 @@ export default function ControllerStepFour() {
               />
             </>
           ) : (
-            <div className="w-full h-fit flex flex-col gap-1">
+            <div className="w-full flex flex-col gap-1">
               <>
                 <p className="text-black font-medium text-xs mr-auto">
                   Start Color
@@ -86,10 +87,11 @@ export default function ControllerStepFour() {
                   }
                 />
               </>
+
               {background.gradientMiddle === null ? (
                 <button
                   onClick={() => handleChange("gradientMiddle", "#ffffff")}
-                  className="h-10 w-full rounded shadow transition-all active:scale-95 text-sm font-medium bg-main-blue text-white"
+                  className="h-10 w-full rounded shadow transition-all active:scale-95 text-xs font-medium bg-main-blue text-white"
                 >
                   Add Middle Color
                 </button>
@@ -121,6 +123,10 @@ export default function ControllerStepFour() {
               </>
             </div>
           )}
+          <GradientAngleSelector
+            value={background.gradientAngle}
+            onChange={(value) => handleChange("gradientAngle", value)}
+          />
         </div>
       </div>
     </div>
