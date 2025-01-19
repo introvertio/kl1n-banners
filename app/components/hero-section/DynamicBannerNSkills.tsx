@@ -56,7 +56,7 @@ export default function DynamicBannerNSkills() {
     return (
       <div className="w-full max-w-2xl flex flex-col gap-6 items-center justify-center">
         <div className="w-full aspect-[3/1] flex items-center justify-center">
-          <Spinner />
+          <Spinner isWhite />
         </div>
       </div>
     );
@@ -96,7 +96,7 @@ export default function DynamicBannerNSkills() {
           : alignment === "right"
           ? "text-right"
           : "text-center"
-      } ${italic ? "italic" : ""}`}
+      } ${italic ? "italic" : ""} transition-all`}
       style={{
         fontSize: `${fontSize}px`,
         fontWeight: fontWeight,
@@ -148,7 +148,7 @@ export default function DynamicBannerNSkills() {
                 : tools.alignment === "right"
                 ? "text-right"
                 : "text-center"
-            }`}
+            } transition-all`}
             style={{
               fontSize: `${tools.fontSize}px`,
               color: tools.color,
@@ -157,7 +157,7 @@ export default function DynamicBannerNSkills() {
             {matchedTools?.length > 0 ? (
               matchedTools.map(({ name, icon }, id) => (
                 <span key={id} title={name} className="inline-block mx-1">
-                  {icon || "🛠"}
+                  {icon}
                 </span>
               ))
             ) : (
@@ -193,7 +193,7 @@ export default function DynamicBannerNSkills() {
                 }, ${background.gradientEnd})`
             : background.color,
         }}
-        className="w-full aspect-[3/1] bg-white flex flex-col items-center justify-between font-bold p-2 md:p-4 overflow-hidden"
+        className="w-full aspect-[3/1] bg-white flex flex-col items-center justify-between font-bold p-2 md:p-4 overflow-hidden transition-all"
       >
         <Reorder.Group
           values={order}
