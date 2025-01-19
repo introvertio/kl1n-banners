@@ -17,7 +17,10 @@ export default function GradientAngleSelector({
 
   return (
     <div className="relative flex flex-col w-full h-full">
-      <p className="text-black font-medium text-xs mr-auto">Angle</p>
+      <div className="flex flex-row items-center justify-between w-full">
+        <p className="text-black font-medium text-xs ">Angle</p>
+        <p className="text-black font-semibold text-xs ">{value}°</p>
+      </div>
       <input
         type="range"
         min={min}
